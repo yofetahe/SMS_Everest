@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <constant name="struts.mapper.action.prefix.enabled" value="true"/>
+	<constant  name="struts.devMode" value="true"/>
+	
+	<constant name="struts.custom.i18n.resources" value="global" />	
+	
+	<include file="xmlConfigFiles/security_page.xml"/>
+	
+	<include file="xmlConfigFiles/dashboard.xml"/>
+	
+	<include file="xmlConfigFiles/student_registration.xml"/>
+	
+	<include file="xmlConfigFiles/nonacademic_stuff_registration.xml"/>
+	
+	<include file="xmlConfigFiles/teacher_registration.xml"/>
+	
+	<include file="xmlConfigFiles/subject_registration.xml"/>
+	
+	<include file="xmlConfigFiles/exam_type_registration.xml"/>
+	
+	<include file="xmlConfigFiles/class_room_registration.xml"/>
+	
+	<include file="xmlConfigFiles/class_schedule.xml"/>
+	
+	<include file="xmlConfigFiles/attendance_page.xml"/>
+	
+	<include file="xmlConfigFiles/exam_result_registration.xml"/>
+	
+	<include file="xmlConfigFiles/pre_exam_questions.xml"/>
+	
+	<include file="xmlConfigFiles/payment_page.xml"/>
+	
+	<include file="xmlConfigFiles/report_page.xml"/>
+	
+	<include file="xmlConfigFiles/communication_page.xml"/>
+	
+	<include file="xmlConfigFiles/administration_page.xml"/>
+	
+	<include file="xmlConfigFiles/behavioural_holistic_evaluation.xml"/>
+	
+	<include file="xmlConfigFiles/cocurriculum_activity.xml"/>
+    
+    <include file="xmlConfigFiles/behavioural_evaluation.xml"/>
+
+<!-- 	<package name="serveAll" namespace="" extends="struts-default"> -->
+<!-- 	    <action name="*"> -->
+<!-- 	        <result>/WEB-IMF/errorPage.jsp</result> -->
+<!-- 	    </action>	         -->
+<!-- 	</package> -->
+    
+<!--     <package name="indexIntro" extends="struts-default">	 -->
+<!-- 		<action name="studentaction_listintro" class="studentClass.StudentAction"> -->
+<!--          	<result name="success">SS_Index_Content/student_template.jsp</result> -->
+<!--       	</action>	 -->
+<!-- 	</package> -->	
+	
+</struts> 

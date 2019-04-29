@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="holisticevaluation" extends="struts-default">
+	    
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+	    
+	    <action name="behaviouralevaluation_classholisticrel" class="behHolisticEvaluationClass.BevalHolisticAction" method="getClassBehHolisticTemp">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/class_holistic_rel_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_holisticcatlist" class="behHolisticEvaluationClass.BevalHolisticAction" method="getHolisticCategoryList">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_category_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_holcategorysave" class="behHolisticEvaluationClass.BevalHolisticAction" method="saveHolisticCategory">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_category_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_category_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_holisticeditform" class="behHolisticEvaluationClass.BevalHolisticAction" method="holisticCategoryEditForm">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_category_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_holcategoryupdate" class="behHolisticEvaluationClass.BevalHolisticAction" method="updateHolisticCategory">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_category_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_category_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	
+      	
+      	
+      	
+      	<action name="behaviouralevaluation_holisticpointlist" class="behHolisticEvaluationClass.BevalHolisticAction" method="getHolisticPointList">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_point_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_holpointsave" class="behHolisticEvaluationClass.BevalHolisticAction" method="saveHolisticPoint">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_point_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_point_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_holisticpointeditform" class="behHolisticEvaluationClass.BevalHolisticAction" method="holisticPointEditForm">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_point_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_holpointupdate" class="behHolisticEvaluationClass.BevalHolisticAction" method="updateHolisticPoint">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_point_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/holistic_point_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	<action name="behaviouralevaluation_categorypointrel" class="behHolisticEvaluationClass.BevalHolisticAction" method="getCategoryPointRelList">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/category_point_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_catpointrelsave" class="behHolisticEvaluationClass.BevalHolisticAction" method="saveCategoryPointRel">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/category_point_rel_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/category_point_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_catpointrelupdateform" class="behHolisticEvaluationClass.BevalHolisticAction" method="categoryPointRelUpdateForm">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/category_point_rel_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_catpointrelupdate" class="behHolisticEvaluationClass.BevalHolisticAction" method="updateCategoryPointRel">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/category_point_rel_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/category_point_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	
+      	
+      	
+      	<action name="behaviouralevaluation_categorypergradelist" class="behHolisticEvaluationClass.BevalHolisticAction" method="getCategoryPerGradeList">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/class_holistic_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_saveclasscategoryrel" class="behHolisticEvaluationClass.BevalHolisticAction" method="saveClassCategoryRel">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/class_holistic_rel_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/class_holistic_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_classcategoryrelupdateform" class="behHolisticEvaluationClass.BevalHolisticAction" method="classCategoryRelUpdateForm">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/class_holistic_rel_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_updateclasscategoryrel" class="behHolisticEvaluationClass.BevalHolisticAction" method="updateClassCategoryRel">
+         	<result name="success">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/class_holistic_rel_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/holistic_behavioural_evaluation/class_holistic_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+    </package>
+</struts>

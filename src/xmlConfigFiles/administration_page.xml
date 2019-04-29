@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+	<package name="administration" extends="struts-default">
+	    
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+	    
+	    <action name="admin">
+         	<result type="redirect">admin_list</result>
+      	</action>
+      		
+		<action name="admin_list" class="adminClass.AdminAction" method="getAdminTemp">
+			<result name="success">SS_Admin/admin_template.jsp</result>
+			<result name="input">SS_Index_Content/login.jsp</result>
+			<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+		</action> 
+		
+		
+		
+		
+		<action name="useraction_list" class="adminClass.AdminAction" method="getSysUserList">
+			<result name="success">SS_Admin/users/user_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="useracademicaction_list" class="adminClass.AdminAction" method="getNoneAcademicUserList">
+			<result name="success">SS_Admin/users/user_noneAcademicUserList.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="userteacheraction_list" class="adminClass.AdminAction" method="getTeacherUserList">
+			<result name="success">SS_Admin/users/user_teacherUserList.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="userstudentaction_list" class="adminClass.AdminAction" method="getStudentUserList">
+			<result name="success">SS_Admin/users/user_studentUserList.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="useracademicaction_createform" class="adminClass.AdminAction" method="getUserCreate">
+			<result name="success">SS_Admin/users/user_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="useracademicaction_save" class="adminClass.AdminAction" method="saveNoneAcUser">
+			<result name="success">SS_Admin/users/user_noneAcademicUserList.jsp</result>
+			<result name="error">SS_Admin/users/user_create.jsp</result> 
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="userteacheraction_save" class="adminClass.AdminAction" method="saveTeacherUser">
+			<result name="success">SS_Admin/users/user_teacherUserList.jsp</result>
+			<result name="error">SS_Admin/users/user_create.jsp</result> 
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="useracademicaction_editform" class="adminClass.AdminAction" method="getUserEdit">
+			<result name="success">SS_Admin/users/user_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="useracademicaction_update" class="adminClass.AdminAction" method="getNoneAcUserUpdate">
+			<result name="success">SS_Admin/users/user_noneAcademicUserList.jsp</result>
+			<result name="error">SS_Admin/users/user_edit.jsp</result> 
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="userteacheraction_update" class="adminClass.AdminAction" method="teacherUserUpdate">
+			<result name="success">SS_Admin/users/user_teacherUserList.jsp</result>
+			<result name="error">SS_Admin/users/user_edit.jsp</result> 
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="useracademicaction_passwordresetform" class="adminClass.AdminAction" method="getUserPasswordResetForm">
+			<result name="success">SS_Admin/users/user_reset_password_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="useracademicaction_resetUsersPassword" class="adminClass.AdminAction" method="resetUserPassword">
+			<result name="success">SS_Admin/users/user_teacherUserList.jsp</result>
+			<result name="error">SS_Admin/users/user_reset_password_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="useracademicaction_restnonteacher_password" class="adminClass.AdminAction" method="resetUserPasswordNoneAcademic">
+			<result name="success">SS_Admin/users/user_noneAcademicUserList.jsp</result>
+			<result name="error">SS_Admin/users/user_reset_password_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="useraction_classdetailList" class="adminClass.AdminAction" method="getClassDetail">
+			<result name="success">SS_Admin/users/user_classdetail.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		
+		
+		
+		
+		
+		
+		<action name="useraction_hrteacher" class="adminClass.AdminAction" method="getHomeRoomTeacherAssign">
+			<result name="success">SS_Admin/home_room_teacher_assignment/homeroomteacherassign_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="useraction_savetcherassign" class="adminClass.AdminAction" method="saveTcherAssign">
+			<result name="success">SS_Admin/home_room_teacher_assignment/homeroomteacherassign_template.jsp</result>
+			<result name="error">SS_Admin/home_room_teacher_assignment/homeroomteacherassign_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="useraction_edittcherassign" class="adminClass.AdminAction" method="updateTcherAssignForm">
+			<result name="success">SS_Admin/home_room_teacher_assignment/homeroomteacherassign_edit.jsp</result>
+			<result name="error">SS_Admin/home_room_teacher_assignment/homeroomteacherassign_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="useraction_updatetcherassign" class="adminClass.AdminAction" method="updateTcherAssignment">
+			<result name="success">SS_Admin/home_room_teacher_assignment/homeroomteacherassign_template.jsp</result>
+			<result name="error">SS_Admin/home_room_teacher_assignment/homeroomteacherassign_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		
+		<action name="useraction_rolelist" class="adminClass.AdminAction" method="getUserRoleList">
+			<result name="success">SS_Admin/user_role/userrole_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="userroleaction_createform" class="adminClass.AdminAction" method="UserRoleListCrtForm">
+			<result name="success">SS_Admin/user_role/userrole_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="userroleaction_save" class="adminClass.AdminAction" method="userRoleSave">
+			<result name="success">SS_Admin/user_role/userrole_list.jsp</result>
+			<result name="error">SS_Admin/user_role/userrole_create.jsp</result> 
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="userroleaction_editform" class="adminClass.AdminAction" method="UserRoleListEdtForm">
+			<result name="success">SS_Admin/user_role/userrole_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="userroleaction_update" class="adminClass.AdminAction" method="userRoleUpdate">
+			<result name="success">SS_Admin/user_role/userrole_list.jsp</result>
+			<result name="error">SS_Admin/user_role/userrole_edit.jsp</result> 
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		<action name="annual_term_list" class="adminClass.AdminAction" method="AnnualTermList">
+			<result name="success">SS_Admin/annual_term/annual_term_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="annualtermaction_createform" class="adminClass.AdminAction" method="AnnualTermCreateForm">
+			<result name="success">SS_Admin/annual_term/annual_term_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="annualtermaction_save" class="adminClass.AdminAction" method="AnnualTermSave">
+			<result name="success">SS_Admin/annual_term/annual_term_list.jsp</result>
+			<result name="error">SS_Admin/annual_term/annual_term_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result> 
+		</action>
+		
+		<action name="annualtermaction_editform" class="adminClass.AdminAction" method="AnnualTermEditForm">
+			<result name="success">SS_Admin/annual_term/annual_term_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="annualtermaction_update" class="adminClass.AdminAction" method="AnnualTermUpdate">
+			<result name="success">SS_Admin/annual_term/annual_term_list.jsp</result>
+			<result name="error">SS_Admin/annual_term/annual_term_edit.jsp</result> 
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		
+		
+		
+		
+		
+		<action name="userroleaction_modulelist" class="adminClass.AdminAction" method="ModulePerRoleList">
+			<result name="success">SS_Admin/userrole_module_rel/userrole_module_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="userroleaction_savemodulelist" class="adminClass.AdminAction" method="SaveModulePerRoleList">
+			<result name="success">SS_Admin/userrole_module_rel/userrole_module_list.jsp</result>
+			<result name="error">SS_Admin/userrole_module_rel/userrole_module_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="userroleaction_updateformmodule" class="adminClass.AdminAction" method="updateModulePerRoleList">
+			<result name="success">SS_Admin/userrole_module_rel/userrole_module_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="userroleaction_updatemoduleutyperel" class="adminClass.AdminAction" method="UpdateModulePerRoleList">
+			<result name="success">SS_Admin/userrole_module_rel/userrole_module_list.jsp</result>
+			<result name="error">SS_Admin/userrole_module_rel/userrole_module_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		<action name="school_event_list" class="adminClass.school_event.SchoolEventAction" method="adminSchoolEvent">
+         	<result name="success">SS_Admin/school_event/schoolevent_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="schooleventaction_createform" class="adminClass.school_event.SchoolEventAction" method="adminSchoolEventCrtForm">
+         	<result name="success">SS_Admin/school_event/schoolevent_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="schooleventaction_editform" class="adminClass.school_event.SchoolEventAction" method="adminSchoolEventEditForm">
+         	<result name="success">SS_Admin/school_event/schoolevent_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="schooleventaction_save" class="adminClass.school_event.SchoolEventAction" method="adminSchoolEventSave">
+         	<result name="success">SS_Admin/school_event/schoolevent_list.jsp</result>
+         	<result name="error">SS_Admin/school_event/schoolevent_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="schooleventaction_update" class="adminClass.school_event.SchoolEventAction" method="adminSchoolEventUpdate">
+         	<result name="success">SS_Admin/school_event/schoolevent_list.jsp</result>
+         	<result name="error">SS_Admin/school_event/schoolevent_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	<action name="holiday_list" class="adminClass.holiday.holidayAction" method="adminHolidayList">
+         	<result name="success">SS_Admin/holiday/holiday_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="holidayaction_createform" class="adminClass.holiday.holidayAction" method="adminHolidayCreateForm">
+         	<result name="success">SS_Admin/holiday/holiday_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="holidayaction_editform" class="adminClass.holiday.holidayAction" method="adminHolidayEditForm">
+         	<result name="success">SS_Admin/holiday/holiday_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="holidayaction_save" class="adminClass.holiday.holidayAction" method="adminHolidaySave">
+         	<result name="success">SS_Admin/holiday/holiday_list.jsp</result>
+         	<result name="error">SS_Admin/holiday/holiday_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="holidayaction_update" class="adminClass.holiday.holidayAction" method="adminHolidayUpdate">
+         	<result name="success">SS_Admin/holiday/holiday_list.jsp</result>
+         	<result name="error">SS_Admin/holiday/holiday_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	
+      	<action name="examschedule_list" class="adminClass.exam_schedule.ExamScheduleAction" method="examScheduleList">
+         	<result name="success">SS_Admin/exam_schedule/examschedule_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="exscheduleaction_filterlist" class="adminClass.exam_schedule.ExamScheduleAction" method="examScheduleFilteredList">
+         	<result name="success">SS_Admin/exam_schedule/examschedule_filtered_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="exscheduleaction_createform" class="adminClass.exam_schedule.ExamScheduleAction" method="examScheduleCreateForm">
+         	<result name="success">SS_Admin/exam_schedule/examschedule_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="exscheduleaction_editform" class="adminClass.exam_schedule.ExamScheduleAction" method="examScheduleEditForm">
+         	<result name="success">SS_Admin/exam_schedule/examschedule_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="subjectListUnderClass" class="adminClass.exam_schedule.ExamScheduleAction" method="subjectListPerClass">
+         	<result name="success">SS_Admin/exam_schedule/examschedule_subjectlist.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examTypePerSubjectUnderClass" class="adminClass.exam_schedule.ExamScheduleAction" method="examTypeListPerSubjectPerClass">
+         	<result name="success">SS_Admin/exam_schedule/examschedule_examtypelist.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examscheduleaction_save" class="adminClass.exam_schedule.ExamScheduleAction" method="examScheduleSave">
+         	<result name="success">SS_Admin/exam_schedule/examschedule_list.jsp</result>
+         	<result name="error">SS_Admin/exam_schedule/examschedule_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examscheduleaction_addselectedettype" class="adminClass.exam_schedule.ExamScheduleAction" method="addSelectedExamSchedule">
+         	<result name="success">SS_Admin/message/success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examscheduleaction_update" class="adminClass.exam_schedule.ExamScheduleAction" method="examScheduleUpdate">
+         	<result name="success">SS_Admin/exam_schedule/examschedule_list.jsp</result>
+         	<result name="error">SS_Admin/exam_schedule/examschedule_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+
+
+
+
+
+
+
+		<action name="curriculumactivity_list" class="adminClass.curriculum_activity.CurriculumAct_Action" method="getCocurActTemplate">
+         	<result name="success">SS_Admin/curriculum_activity/cocurriculum_activity_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	      	
+      	<action name="cocuract_departmentlist" class="adminClass.curriculum_activity.CurriculumAct_Action" method="getDepartmentList">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_department.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="cocuract_clublist" class="adminClass.curriculum_activity.CurriculumAct_Action" method="getClubList">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_club.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="cocuract_teacherrolelist" class="adminClass.curriculum_activity.CurriculumAct_Action" method="getTeacherRoleList">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_teacherrole.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="cocuract_departmentsave" class="adminClass.curriculum_activity.CurriculumAct_Action" method="saveDepartment">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_department.jsp</result>
+         	<result name="error">SS_Admin/curriculum_activity/cocuract_department.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="cocuract_departmentupdateform" class="adminClass.curriculum_activity.CurriculumAct_Action" method="departmentEditForm">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_department_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="cocuract_departmentupdate" class="adminClass.curriculum_activity.CurriculumAct_Action" method="updateDepartment">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_department.jsp</result>
+         	<result name="error">SS_Admin/curriculum_activity/cocuract_department.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="cocuract_clubsave" class="adminClass.curriculum_activity.CurriculumAct_Action" method="saveClub">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_club.jsp</result>
+         	<result name="error">SS_Admin/curriculum_activity/cocuract_club.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="cocuract_clubupdateform" class="adminClass.curriculum_activity.CurriculumAct_Action" method="clubEditForm">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_club_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="cocuract_clubupdate" class="adminClass.curriculum_activity.CurriculumAct_Action" method="updateClub">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_club.jsp</result>
+         	<result name="error">SS_Admin/curriculum_activity/cocuract_club.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="cocuract_deporclublist" class="adminClass.curriculum_activity.CurriculumAct_Action" method="responsibilityList">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_teacherrole_resplist.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="cocuract_teacherrolesave" class="adminClass.curriculum_activity.CurriculumAct_Action" method="saveTeacherRole">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_teacherrole.jsp</result>
+         	<result name="error">SS_Admin/curriculum_activity/cocuract_teacherrole.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="cocuract_tchroleupdateform" class="adminClass.curriculum_activity.CurriculumAct_Action" method="tchrroleEditForm">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_teacherrole_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="cocuract_tchrroleupdate" class="adminClass.curriculum_activity.CurriculumAct_Action" method="updateTeacherRole">
+         	<result name="success">SS_Admin/curriculum_activity/cocuract_teacherrole.jsp</result>
+         	<result name="error">SS_Admin/curriculum_activity/cocuract_teacherrole.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	<action name="behaviouralevaluation_list" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationTemplate">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_traitslist" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationTraitsList">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_trait_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_traitsave" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationTraitsSave">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_trait_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/behavioural_evaluation_trait_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_traiteditform" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationTraitsEditForm">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_trait_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_traitupdate" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationTraitsUpdate">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_trait_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/behavioural_evaluation_trait_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>       	
+      	
+      	<action name="behaviouralevaluation_gradelist" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationGradeList">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_grade_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_gradesave" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationGradeSave">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_grade_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/behavioural_evaluation_grade_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_gradeeditform" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationGradeEditForm">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_grade_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_gradeupdate" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationGradeUpdate">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_grade_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/behavioural_evaluation_grade_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>  
+      	
+      	<action name="behaviouralevaluation_traitgraderel" class="adminClass.behavioural_evaluation.BehEval_Action" method="getBehaviouralEvaluationTraitGradeRelList">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_traitgraderel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_savetraitsgraderel" class="adminClass.behavioural_evaluation.BehEval_Action" method="saveBehaviouralEvaluationTraitGradeRel">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_traitgraderel_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/behavioural_evaluation_traitgraderel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_editformtraitsgraderel" class="adminClass.behavioural_evaluation.BehEval_Action" method="editFormBehaviouralEvaluationTraitGradeRel">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_traitgraderel_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_updatetraitsgraderel" class="adminClass.behavioural_evaluation.BehEval_Action" method="updateBehaviouralEvaluationTraitGradeRel">
+         	<result name="success">SS_Admin/behavioural_evaluation/behavioural_evaluation_traitgraderel_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/behavioural_evaluation_traitgraderel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_classtraitrel" class="adminClass.behavioural_evaluation.BehEval_Action" method="classTraitRel">
+         	<result name="success">SS_Admin/behavioural_evaluation/class_trait_relationship/class_trait_rel_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_classtraitlist" class="adminClass.behavioural_evaluation.BehEval_Action" method="classTraitRelList">
+         	<result name="success">SS_Admin/behavioural_evaluation/class_trait_relationship/class_trait_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_saveclasstraitrel" class="adminClass.behavioural_evaluation.BehEval_Action" method="saveClassTraitRel">
+         	<result name="success">SS_Admin/behavioural_evaluation/class_trait_relationship/class_trait_rel_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/class_trait_relationship/class_trait_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_editformclasstraitrel" class="adminClass.behavioural_evaluation.BehEval_Action" method="classTraitRelEditForm">
+         	<result name="success">SS_Admin/behavioural_evaluation/class_trait_relationship/class_trait_rel_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_updateclasstraitrel" class="adminClass.behavioural_evaluation.BehEval_Action" method="classTraitRelUpdate">
+         	<result name="success">SS_Admin/behavioural_evaluation/class_trait_relationship/class_trait_rel_list.jsp</result>
+         	<result name="error">SS_Admin/behavioural_evaluation/class_trait_relationship/class_trait_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	
+      	<action name="studentMaterial_list" class="adminClass.student_material.StudentMaterialAction" method="studentMaterialTemplate">
+         	<result name="success">SS_Admin/student_material/student_material_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentMaterial_materialList" class="adminClass.student_material.StudentMaterialAction" method="studentMaterialList">
+         	<result name="success">SS_Admin/student_material/student_material_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentMaterial_save_material" class="adminClass.student_material.StudentMaterialAction" method="saveStudentMaterial">
+         	<result name="success">SS_Admin/student_material/student_material_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentMaterial_material_update_form" class="adminClass.student_material.StudentMaterialAction" method="updateStudentMaterialForm">
+         	<result name="success">SS_Admin/student_material/student_material_update.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentMaterial_material_update" class="adminClass.student_material.StudentMaterialAction" method="updateStudentMaterial">
+         	<result name="success">SS_Admin/student_material/student_material_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentMaterial_classMaterialRelList" class="adminClass.student_material.StudentMaterialAction" method="studentMaterialRelList">
+         	<result name="success">SS_Admin/student_material/class_material_relationship/class_material_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentMaterial_save_materialclass_rel" class="adminClass.student_material.StudentMaterialAction" method="saveMaterialClassRelList">
+         	<result name="success">SS_Admin/student_material/class_material_relationship/class_material_rel_list.jsp</result>
+         	<result name="error">SS_Admin/student_material/class_material_relationship/class_material_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentMaterial_matclassrel_update_form" class="adminClass.student_material.StudentMaterialAction" method="updateMaterialClassRelForm">
+         	<result name="success">SS_Admin/student_material/class_material_relationship/class_material_rel_update.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentMaterial_matclassrel_update" class="adminClass.student_material.StudentMaterialAction" method="updateMaterialClassRel">
+         	<result name="success">SS_Admin/student_material/class_material_relationship/class_material_rel_list.jsp</result>
+         	<result name="error">SS_Admin/student_material/class_material_relationship/class_material_rel_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	<action name="attendance_attendanceTypeList" class="adminClass.attendance.Attendance_Action" method="getAttendanceTypeTemplate">
+         	<result name="success">SS_Admin/attendance/attendance_type_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="attendance_saveAttendanceType" class="adminClass.attendance.Attendance_Action" method="saveAttendanceType">
+         	<result name="success">SS_Admin/attendance/attendance_type_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="attendance_updateFormAttendanceType" class="adminClass.attendance.Attendance_Action" method="updateFormAttendanceType">
+         	<result name="success">SS_Admin/attendance/attendance_type_update.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="attendance_updateAttendanceType" class="adminClass.attendance.Attendance_Action" method="updateAttendanceType">
+         	<result name="success">SS_Admin/attendance/attendance_type_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	<action name="cert_default_comment" class="adminClass.certificateDefaultComment.CertDefaultComAction" method="getCommentList">
+         	<result name="success">SS_Admin/certificate_default_comment/cert_default_comment_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="defaultComment_save" class="adminClass.certificateDefaultComment.CertDefaultComAction" method="saveDefaultComment">
+         	<result name="success">SS_Admin/certificate_default_comment/cert_default_comment_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="defaultComment_updatefrom" class="adminClass.certificateDefaultComment.CertDefaultComAction" method="updateFormDefaultComment">
+         	<result name="success">SS_Admin/certificate_default_comment/cert_default_comment_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="defaultComment_update" class="adminClass.certificateDefaultComment.CertDefaultComAction" method="updateDefaultComment">
+         	<result name="success">SS_Admin/certificate_default_comment/cert_default_comment_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	<action name="exam_grading" class="adminClass.examGrading.ExamGradingAction" method="getExamGradingList">
+         	<result name="success">SS_Admin/exam_grading/exam_grading_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examgrade_save" class="adminClass.examGrading.ExamGradingAction" method="saveExamGrading">
+         	<result name="success">SS_Admin/exam_grading/exam_grading_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examgrade_updateform" class="adminClass.examGrading.ExamGradingAction" method="updateFormExamGrading">
+         	<result name="success">SS_Admin/exam_grading/exam_grading_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examgrade_update" class="adminClass.examGrading.ExamGradingAction" method="updateExamGrading">
+         	<result name="success">SS_Admin/exam_grading/exam_grading_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	<action name="speical_registration" class="adminClass.special_registration.SpeRegistrationAction" method="specialRegistrationTemp">
+         	<result name="success">SS_Admin/special_registration/special_reg_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="speicalreg_classgradelist" class="adminClass.special_registration.SpeRegistrationAction" method="studentPerGrade">
+         	<result name="success">SS_Admin/special_registration/class_detail_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="speicalreg_studentlistperclassdetail" class="adminClass.special_registration.SpeRegistrationAction" method="studentPerGradeDetail">
+         	<result name="success">SS_Admin/special_registration/special_reg_stud_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="speicalreg_regaddselectedstudent" class="adminClass.special_registration.SpeRegistrationAction" method="regAddSelectedStudent">
+         	<result name="success">SS_Admin/special_registration/special_reg_stud_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="speicalreg_regremoveselectedstudent" class="adminClass.special_registration.SpeRegistrationAction" method="regRemoveSelectedStudent">
+         	<result name="success">SS_Admin/special_registration/special_reg_stud_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="speicalreg_registerselectedstudent" class="adminClass.special_registration.SpeRegistrationAction" method="speRegisterSelectedStudent">
+         	<result name="success">SS_Admin/special_registration/special_reg_stud_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="speicalreg_regaddregisteredstudent" class="adminClass.special_registration.SpeRegistrationAction" method="regAddRegisteredStudent">
+         	<result name="success">SS_Admin/special_registration/special_reg_stud_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="speicalreg_regremoveregisteredstudentselection" class="adminClass.special_registration.SpeRegistrationAction" method="regRemoveSelectedRegisteredStudent">
+         	<result name="success">SS_Admin/special_registration/special_reg_stud_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="speicalreg_removestudentfromspecialreg" class="adminClass.special_registration.SpeRegistrationAction" method="speRemoveStudentSpecialRegistration">
+         	<result name="success">SS_Admin/special_registration/special_reg_stud_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	<action name="generate_id_card" class="adminClass.id_card_generation.IDCardAction" method="getIDCardGenerationTemplate">
+         	<result name="success">SS_Admin/id_card_generation/id_card_generation_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+			<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+      	</action>
+      	
+      	<action name="generate_id_card_classgradelist" class="adminClass.id_card_generation.IDCardAction" method="studentPerGrade">
+         	<result name="success">SS_Admin/id_card_generation/class_detail_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="generate_id_card_studentlistperclassdetail" class="adminClass.id_card_generation.IDCardAction" method="studentListPerGradeDetail">
+         	<result name="success">SS_Admin/id_card_generation/stud_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="generate_id_card_generatestudentidcard" class="adminClass.id_card_generation.IDCardAction" method="generateStudentIDCard">
+         	<result name="success">SS_Admin/id_card_generation/pdf_generation_success.jsp</result>
+         	<result name="error">SS_Admin/id_card_generation/pdf_generation_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="generate_id_card_forremainingstud" class="adminClass.id_card_generation.IDCardAction" method="remainingStudentList">
+         	<result name="success">SS_Admin/id_card_generation/stud_list_remaining.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="generate_id_card_generateidcard_forremainingstudent" class="adminClass.id_card_generation.IDCardAction" method="generateStudentIDCardForRemaining">
+         	<result name="success">SS_Admin/id_card_generation/pdf_generation_success.jsp</result>
+         	<result name="error">SS_Admin/id_card_generation/pdf_generation_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_getStudentDontHavePhotoContactInfo" class="adminClass.id_card_generation.IDCardAction" method="getStudentDontHavePhotoContactInfo">
+         	<result name="success">SS_Admin/id_card_generation/stud_without_photo_contact_info.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_getStudentDontHaveContactInfo" class="adminClass.id_card_generation.IDCardAction" method="getStudentDontHaveContactInfo">
+         	<result name="success">SS_Admin/id_card_generation/stud_without_photo_contact_info.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	<action name="class_allotment" class="adminClass.classPeriodAssignment.ClassPeriodAssignAction" method="getClassAllotmentTemp">
+         	<result name="success">SS_Admin/class_allotment/class_allotment_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="adminaction_classSubjectPeriodAllotmentByYear" class="adminClass.classPeriodAssignment.ClassPeriodAssignAction" method="classSubjectPeriodAllotmentByYear">
+         	<result name="success">SS_Admin/class_allotment/class_allotment_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="adminaction_subjectListForm" class="adminClass.classPeriodAssignment.ClassPeriodAssignAction" method="getSubjectAllotmentForm">
+         	<result name="success">SS_Admin/class_allotment/subject_period_allotment_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="adminaction_saveClassPeriodAllotment" class="adminClass.classPeriodAssignment.ClassPeriodAssignAction" method="saveClassPeriodAllotment">
+         	<result name="success">SS_Admin/class_allotment/subject_period_allotment_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="adminaction_editAllotedNumOfPeriod" class="adminClass.classPeriodAssignment.ClassPeriodAssignAction" method="getClassPeriodAllotmentUpdateForm">
+         	<result name="success">SS_Admin/class_allotment/subject_period_allotment_update_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="adminaction_updateClassPeriodAllotment" class="adminClass.classPeriodAssignment.ClassPeriodAssignAction" method="updateClassPeriodAllotment">
+         	<result name="success">SS_Admin/class_allotment/class_allotment_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+	</package>
+    
+</struts>    

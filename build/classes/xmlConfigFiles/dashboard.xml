@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+	<package name="dashboard" extends="struts-default">
+	    
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+	    
+	    <action name="dashboard">
+			<result type="redirect">dashboard_info</result>
+		</action>
+      	
+      	<action name="dashboard_info" class="adminClass.AdminAction" method="dashboard">
+      		<result name="success">SS_Index_Content/index.jsp</result>
+      		<result name="input" >SS_Index_Content/login.jsp</result>
+      	</action> 
+      	
+      	<action name="chang_profile" class="adminClass.AdminAction" method="changeProfile">
+      		<result name="success">SS_Index_Content/change_profile.jsp</result>
+      		<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="chang_profile_validate_username" class="adminClass.AdminAction" method="changeProfileValidateUsername">
+      		<result name="success">SS_Index_Content/response/valid.jsp</result>
+      		<result name="PASSWORDERROR">SS_Index_Content/response/passworderror.jsp</result>
+      		<result name="error">SS_Index_Content/response/invalid.jsp</result>
+      		<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="chang_profile_first_time" class="adminClass.AdminAction" method="changeProfileFirstTimeLogin">
+      		<result name="success">SS_Index_Content/response/valid.jsp</result>
+      		<result name="error">SS_Index_Content/response/invalid.jsp</result>
+      		<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="chang_profile_duplicated_username" class="adminClass.AdminAction" method="changeProfileDuplicatedUsername">
+      		<result name="success">SS_Index_Content/change_profile_form.jsp</result>
+      		<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="chang_profile_update_first_time_login" class="adminClass.AdminAction" method="changeProfileUpdateFirstTimeLogin">
+      		<result name="success">SS_Index_Content/login.jsp</result>
+      		<result name="error">SS_Index_Content/change_profile.jsp</result>
+      		<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="chang_profile_update" class="adminClass.AdminAction" method="changeProfileUpdate">
+      		<result name="success">SS_Index_Content/login.jsp</result>
+      		<result name="error">SS_Index_Content/change_profile.jsp</result>
+      		<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="logout" class="adminClass.AdminAction" method="logout">
+			<result name="success">SS_Index_Content/login.jsp</result>
+		</action> 
+		
+		<action name="dbcontent_noofstudpergrd" class="adminClass.AdminAction" method="noofstudpergrd">
+			<result name="success">SS_Index_Content/dashboard_content/noofstudpergrade.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>  
+		
+		<action name="dbcontent_noofstud" class="adminClass.AdminAction" method="noofstud">
+			<result name="success">SS_Index_Content/dashboard_content/noofstud.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="dbcontent_noofteacher" class="adminClass.AdminAction" method="noofteacher">
+			<result name="success">SS_Index_Content/dashboard_content/noofteacher.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="dbcontent_teacherschedule" class="adminClass.AdminAction" method="teacherSchedule">
+			<result name="success">SS_Index_Content/dashboard_content/teacher_class_schedule.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="dbcontent_schoolevent" class="adminClass.AdminAction" method="schoolevent">
+			<result name="success">SS_Index_Content/dashboard_content/school_event.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="dbcontent_holidaylist" class="adminClass.AdminAction" method="holidayList">
+			<result name="success">SS_Index_Content/dashboard_content/holiday_peryear.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="dbcontent_examschedule" class="adminClass.AdminAction" method="examSchedule">
+			<result name="success">SS_Index_Content/dashboard_content/exam_schedule.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+    
+	</package>
+</struts>

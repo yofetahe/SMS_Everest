@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <package name="pre_exam" extends="struts-default">
+        
+        <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        
+        <action name="preexam">
+         	<result type="redirect">preexam_list</result>
+      	</action>
+      		
+		<action name="preexam_list" class="preExamQstClass.PreExamAction" method="getPreExamList">
+			<result name="success">SS_PreExamQst_Registration/preexam_template.jsp</result>
+         	<result name="input">SS_Index_Content/login.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+		</action>
+		
+		<action name="question_create" class="preExamQstClass.PreExamAction" method="questionFrom">
+			<result name="success">SS_PreExamQst_Registration/question_create_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_sublist" class="preExamQstClass.PreExamAction" method="subjectList">
+			<result name="success">SS_PreExamQst_Registration/subject_underclass_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_sub_qstcatlist" class="preExamQstClass.PreExamAction" method="subjectExamCatList">
+			<result name="success">SS_PreExamQst_Registration/question_category.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_sub_questionlist" class="preExamQstClass.PreExamAction" method="subjectQstList">
+			<result name="success">SS_PreExamQst_Registration/question_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_add_question" class="preExamQstClass.PreExamAction" method="saveQst">
+			<result name="success">SS_PreExamQst_Registration/question_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/question_create_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="question_update" class="preExamQstClass.PreExamAction" method="questionUpdateForm">
+			<result name="success">SS_PreExamQst_Registration/question_update_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_update_question" class="preExamQstClass.PreExamAction" method="updateQst">
+			<result name="success">SS_PreExamQst_Registration/question_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/question_update_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="pe_create_examcat" class="preExamQstClass.PreExamAction" method="examCatCreateForm">
+			<result name="success">SS_PreExamQst_Registration/exam_cat_create_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="pe_list_examcat" class="preExamQstClass.PreExamAction" method="examCatList">
+			<result name="success">SS_PreExamQst_Registration/exam_cat_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_save_examcat" class="preExamQstClass.PreExamAction" method="saveQstCat">
+			<result name="success">SS_PreExamQst_Registration/question_category.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/exam_cat_create_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_updatefrm_examcat" class="preExamQstClass.PreExamAction" method="examCatUpdateForm">
+			<result name="success">SS_PreExamQst_Registration/exam_cat_update_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="pe_update_examcat" class="preExamQstClass.PreExamAction" method="updateQstCat">
+			<result name="success">SS_PreExamQst_Registration/exam_cat_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/exam_cat_update_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="question_choise_list" class="preExamQstClass.PreExamAction" method="qstChoiceList">
+			<result name="success">SS_PreExamQst_Registration/question_choice_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_choice_create" class="preExamQstClass.PreExamAction" method="qstChoiceCreateForm">
+			<result name="success">SS_PreExamQst_Registration/question_choice_create_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_choice_save" class="preExamQstChoiceClass.PreExamQChoiceAction" method="qstChoiceSave">
+			<result name="success">SS_PreExamQst_Registration/question_choice_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/question_choice_create_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_choice_editform" class="preExamQstChoiceClass.PreExamQChoiceAction" method="qstChoiceUpdateForm">
+			<result name="success">SS_PreExamQst_Registration/question_choice_edit_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_choice_update" class="preExamQstChoiceClass.PreExamQChoiceAction" method="qstChoiceUpdate">
+			<result name="success">SS_PreExamQst_Registration/question_choice_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/question_choice_edit_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="question_desc_list" class="preExamDesc.PreExamDescAction" method="qstDescList">
+			<result name="success">SS_PreExamQst_Registration/question_desc_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="question_desc_crtform" class="preExamDesc.PreExamDescAction" method="qstDescCrtFrm">
+			<result name="success">SS_PreExamQst_Registration/question_desc_create_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="question_desc_save" class="preExamDesc.PreExamDescAction" method="qstDescSave">
+			<result name="success">SS_PreExamQst_Registration/question_desc_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/question_desc_create_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="question_desc_editform" class="preExamDesc.PreExamDescAction" method="qstDescEdtFrm">
+			<result name="success">SS_PreExamQst_Registration/question_desc_edit_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="question_desc_update" class="preExamDesc.PreExamDescAction" method="qstDescUpdate">
+			<result name="success">SS_PreExamQst_Registration/question_desc_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/question_desc_edit_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="question_desc_imageuploadfrm" class="preExamDesc.PreExamDescAction" method="qstDescDocUploadFrm">
+			<result name="success">SS_PreExamQst_Registration/photo_uploader.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="uploadQstDocument" class="preExamDesc.PreExamDescAction" method="qstDescDocUpload">
+			<result name="success">SS_PreExamQst_Registration/question_desc_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/photo_uploader.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="question_imageuploadfrm" class="preExamDesc.PreExamDescAction" method="qstDescDocUploadFrm">
+			<result name="success">SS_PreExamQst_Registration/photo_uploader.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="uploadDescDocument" class="preExamQstClass.PreExamAction" method="qstDocUpload">
+			<result name="success">SS_PreExamQst_Registration/question_desc_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/photo_uploader.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="pe_choice_uploadfrm" class="preExamDesc.PreExamDescAction" method="qstDescDocUploadFrm">
+			<result name="success">SS_PreExamQst_Registration/photo_uploader.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="uploadChoiceDocument" class="preExamQstChoiceClass.PreExamQChoiceAction" method="qstChoiceDocUpload">
+			<result name="success">SS_PreExamQst_Registration/question_desc_list.jsp</result>
+			<result name="error">SS_PreExamQst_Registration/photo_uploader.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+	</package>
+    
+</struts>

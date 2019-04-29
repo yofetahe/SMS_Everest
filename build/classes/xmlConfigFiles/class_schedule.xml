@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <package name="classScheduleReg" extends="struts-default">
+        
+        <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        
+        <action name="class_schedule">
+         	<result type="redirect">classSchedule</result>
+      	</action>
+      	
+      	<action name="classSchedule" class="classSchedule.ClassScheduleAction" method="classScheduleTemp">
+         	<result name="success">SS_Class_Schedule/classSchedule_template.jsp</result>
+         	<result name="input">SS_Index_Content/login.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classschedule_pergradelist" class="classSchedule.ClassScheduleAction" method="ClDetailStudentList">
+         	<result name="success">SS_Class_Schedule/classSchedule_pergradelist.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classschedule_listpergrdetail" class="classSchedule.ClassScheduleAction" method="classschedule_listpergrdetail">
+         	<result name="success">SS_Class_Schedule/classSchedule_listpergrdetail.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>      	
+      	
+      	<action name="classschedule_listpergrdetail_forprint" class="classSchedule.ClassScheduleAction" method="classschedule_listpergrdetail_forprint">
+         	<result name="success">SS_Class_Schedule/classSchedule_listpergrdetail_forprint.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classschedule_listpergrdetail_crtform" class="classSchedule.ClassScheduleAction" method="classschedule_listpergrdetail_crtform">
+         	<result name="success">SS_Class_Schedule/classSchedule_listpergrade_crtform.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classschedule_academicprogram_peryear" class="classSchedule.ClassScheduleAction" method="classschedule_listpergrdetail_peryear">
+         	<result name="success">SS_Class_Schedule/classSchedule_academicprogram.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classschedule_teacherforsubject" class="classSchedule.ClassScheduleAction" method="classschedule_teacherforsubject">
+         	<result name="success">SS_Class_Schedule/classSchedule_teacherlist.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classschedule_classSchedule" class="classSchedule.ClassScheduleAction" method="classschedule_perperiodandwday">
+         	<result name="success">SS_Class_Schedule/classSchedule_selectedSchedule.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classschedule_saveinfo" class="classSchedule.ClassScheduleAction" method="classschedule_saveinfo">
+         	<result name="success">SS_Class_Schedule/message_success.jsp</result>
+         	<result name="error">SS_Class_Schedule/message_error.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classschedule_removeinfo" class="classSchedule.ClassScheduleAction" method="classschedule_removeinfo">
+         	<result name="success">SS_Class_Schedule/classSchedule_celladdfrm.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classschedule_editinfo" class="classSchedule.ClassScheduleAction" method="classschedule_editinfo">
+         	<result name="success">SS_Class_Schedule/classSchedule_updatefrm.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classschedule_updateinfo" class="classSchedule.ClassScheduleAction" method="classschedule_updateinfo">
+         	<result name="success">SS_Class_Schedule/classSchedule_selectedSchedule.jsp</result>
+         	<result name="error">SS_Class_Schedule/classSchedule_updatefrm.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classschedule_teachers_schedule" class="classSchedule.ClassScheduleAction" method="classschedule_teachers_schedule">
+         	<result name="success">SS_Class_Schedule/classSchedule_teachers_schedule.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classschedule_viewSelectedTeacherSchedule" class="classSchedule.ClassScheduleAction" method="classschedule_teachers_schedule_detail">
+         	<result name="success">SS_Class_Schedule/classSchedule_teachers_schedule_table.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classschedule_general_schedule" class="classSchedule.ClassScheduleAction" method="general_classschedule">
+         	<result name="success">SS_Class_Schedule/classSchedule_general_schedule_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classschedule_generalschedule_pdf" class="classSchedule.ClassScheduleAction" method="general_classschedule_pdf">
+         	<result name="success">SS_ExamRslt_Registration/message/pdf_generation_success.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/message/pdf_generation_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classschedule_subjectAssignmentSuggestion" class="classSchedule.ClassScheduleAction" method="subjectAssignmentSuggestion">
+         	<result name="success">SS_Class_Schedule/suggested_subject_assignment.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+	
+	</package>
+    
+</struts>

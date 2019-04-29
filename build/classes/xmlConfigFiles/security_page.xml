@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <package name="security" extends="struts-default">
+        
+       <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPageBacktoLogin.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        
+        <action name="firstInstallation">
+			<result type="redirectAction">Installation</result>
+		</action>
+		
+	    <action name="Installation" class="adminClass.AdminAction">
+      		<result name="success">SS_Index_Content/first_installation_page.jsp</result>
+      		<result name="input">SS_Index_Content/first_installation_page.jsp</result>
+      	</action>
+      	
+      	<action name="installation_school_information" class="adminClass.AdminAction" method="InstallSysAndSaveSchoolInformation">
+      		<result name="FIRSTINSTALLATIONDONE">SS_Index_Content/login.jsp</result>
+      		<result name="success">SS_Index_Content/login.jsp</result>
+      		<result name="input">SS_Index_Content/first_installation_page.jsp</result>
+      	</action>
+      	
+      	<action name="DatabaseBackup" class="adminClass.AdminAction" method="takeDatabaseBackup">
+      		<result name="success">SS_Index_Content/login.jsp</result>
+      		<result name="error">WEB-INF/errorPage.jsp</result>
+      		<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+	    
+      	
+      	
+		<action name="index">
+			<result type="redirectAction">indexpage</result>
+		</action>
+			
+		<action name="indexpage" class="adminClass.AdminAction" method="validateLogin">
+		    <result name="success">SS_Index_Content/index.jsp</result>
+         	<result name="CHANGEPASSWORD">SS_Index_Content/change_profile_first_login.jsp</result>
+         	<result name="error" >SS_Index_Content/login.jsp</result>
+         	<result name="input" >SS_Index_Content/login.jsp</result>
+         	<result name="SYSERROR">SS_SYS_Error/invalid_system_access.jsp</result>
+         	<result name="SYSINSERROR">SS_Util/wrong_sys_installation_path.jsp</result>
+      	</action>
+      	
+		<action name="loginpage">
+		    <result>SS_Index_Content/login.jsp</result>
+		</action>
+      	
+	</package>
+    
+</struts>    

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <package name="examRsltReg" extends="struts-default">
+        
+        <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        
+        <action name="exam">
+         	<result type="redirect">examrslt_list</result>
+      	</action>
+	
+		<action name="examrslt_list" class="examClass.exam_result.ExamResultAction" method="examRsltTemp">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_template.jsp</result>
+         	<result name="input">SS_Index_Content/login.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+      	</action>
+      	
+		<action name="examrsltaction_studrsltlisttemp" class="examClass.exam_result.ExamResultAction" method="studExamRsltListTemp">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_studrsltaddfrmtemp" class="examClass.exam_result.ExamResultAction" method="studExamRsltAddFrmTemp">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_addform.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_classlist" class="examClass.exam_result.ExamResultAction" method="ClassList">
+         	<result name="success">SS_ExamRslt_Registration/class_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_importclasslist" class="examClass.exam_result.ExamResultAction" method="ClassList">
+         	<result name="success">SS_ExamRslt_Registration/import_result_from_excel/class_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_grdlist" class="examClass.exam_result.ExamResultAction" method="gradeDetailList">
+         	<result name="success">SS_ExamRslt_Registration/grade_detail_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_clsublist" class="examClass.exam_result.ExamResultAction" method="ClSubjectList">
+         	<result name="success">SS_ExamRslt_Registration/subject_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_clsublist_srslt" class="examClass.exam_result.ExamResultAction" method="ClSubListStudRslt">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_studrsltlist.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+	
+		<action name="examrsltaction_clsubexamlist" class="examClass.exam_result.ExamResultAction" method="ClSubjectExamList">
+         	<result name="success">SS_ExamRslt_Registration/exam_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_clstudentlist" class="examClass.exam_result.ExamResultAction" method="ClStudentList">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_addstudrslt" class="examClass.exam_result.ExamResultAction" method="AddStudentRslt">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_create.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/examrslt_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>  
+      	
+      	<action name="examrsltaction_removeexamrslt" class="examClass.exam_result.ExamResultAction" method="RemoveStudentRslt">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_create.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/examrslt_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_savestudrslt" class="examClass.exam_result.ExamResultAction" method="saveStudentRslt">
+         	<result name="success">SS_ExamRslt_Registration/message/save_success.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_refreshcreatetable" class="examClass.exam_result.ExamResultAction" method="refreshClStudentList">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_createtable.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_clstudentlist" class="examClass.exam_result.ExamResultAction" method="ClStudentList">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_pergradelist" class="examClass.exam_result.ExamResultAction" method="ClDetailStudentList">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_list_pergrade.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_classdetail" class="examClass.exam_result.ExamResultAction" method="StudentListExRsltPerGrade">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_student_rsltlist.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_classdetailfullyear" class="examClass.exam_result.ExamResultAction" method="StudentListFullYearExRsltPerGrade">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_fullyear.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_rsltdetail" class="examClass.exam_result.ExamResultAction" method="examRsltDetail">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_persubjectdetail.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_subdetaillist" class="examClass.exam_result.ExamResultAction" method="examRsltPerSubDetail">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_persubdetail_detail.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_editform" class="examClass.exam_result.ExamResultAction" method="examRsltPerSubDetail_editform">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_updateresult" class="examClass.exam_result.ExamResultAction" method="examRsltPerSubDetail_update">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_result_added.jsp</result>
+         	<result name="UPDATESUCCESS">SS_ExamRslt_Registration/message/update_success.jsp</result>
+         	<result name="UPDATENOTALLOWED">SS_ExamRslt_Registration/message/mark_update_error_message.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/examrslt_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_studlistpergradedetail" class="examClass.exam_result.ExamResultAction" method="studListPerGradeDetail">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_createtable_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_finalrsltdecision" class="examClass.exam_result.ExamResultAction" method="saveFinalStudentRsltDecision">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_fullyear.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_semisterlist" class="examClass.exam_result.ExamResultAction" method="getAnnualTermPerYear">
+         	<result name="success">SS_ExamRslt_Registration/annual_term_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_certificateview" class="examClass.exam_result.ExamResultAction" method="getCertificateView">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_certificateview.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_certificateview_forall_PDF" class="examClass.exam_result.ExamResultAction" method="getCertificateViewForAllPDF_New">
+         	<result name="success">SS_ExamRslt_Registration/message/pdf_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_certificate_cover_forall_PDF" class="examClass.exam_result.ExamResultAction" method="getCertificateCoverForAllPDF">
+         	<result name="success">SS_ExamRslt_Registration/message/pdf_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_certificateview_coverpage" class="examClass.exam_result.ExamResultAction" method="getCertificateViewCoverPage">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_certificateview_coverpage.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_generalStudentResultDecision" class="examClass.exam_result.ExamResultAction" method="generalStudentResultDecision">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_student_rslt_decision.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_saveStudentFinalResultStatus" class="examClass.exam_result.ExamResultAction" method="saveStudentFinalResultStatusPerAverageRange">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_fullyear.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/examrslt_fullyear.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_updateStudentFinalResultStatus" class="examClass.exam_result.ExamResultAction" method="updateStudentFinalResultStatusPerAverageRange">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_fullyear.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/examrslt_fullyear.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_quarterresult" class="examClass.exam_result.ExamResultAction" method="getQuarterResultView">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_quarter_result_view.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_generateallstudentcertificate" class="examClass.exam_result.ExamResultAction" method="generateAllStudentQuarterResultCertificatePDF">
+         	<result name="success">SS_ExamRslt_Registration/message/pdf_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	<action name="examrsltaction_classlist_srslt" class="examClass.exam_result.ExamResultAction" method="getClassListForQrtView">
+         	<result name="success">SS_ExamRslt_Registration/class_list_2.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_teacherscomment_addform" class="examClass.exam_result.ExamResultAction" method="getTeachersCommentAddForm">
+         	<result name="success">SS_ExamRslt_Registration/teachers_comment/teachers_comment_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="examrsltaction_saveteachercomment" class="examClass.exam_result.ExamResultAction" method="saveTeachersComment">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_student_rsltlist.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/teachers_comment/teachers_comment_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_teacherscomment_editform" class="examClass.exam_result.ExamResultAction" method="getTeachersCommentEditForm">
+         	<result name="success">SS_ExamRslt_Registration/teachers_comment/teachers_comment_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_updateteachercomment" class="examClass.exam_result.ExamResultAction" method="updateTeachersComment">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_student_rsltlist.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/teachers_comment/teachers_comment_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="communication_emailstudentquarterresult" class="examClass.exam_result.ExamResultAction" method="emailStudentQuarterResult">
+         	<result name="success">SS_ExamRslt_Registration/examrslt_student_rsltlist.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/examrslt_quarter_result_view.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="communication_emailallstudentquarterresult_atonce" class="examClass.exam_result.ExamResultAction" method="emailToAllParents">
+         	<result name="success">SS_ExamRslt_Registration/message/email_for_all_parents.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	
+      	<action name="examrsltaction_importStudrsltfromexcel" class="examClass.exam_result.ExamResultAction" method="importStudrsltfromexceltemplate">
+         	<result name="success">SS_ExamRslt_Registration/import_result_from_excel/import_from_excel_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_importstudmarkfromexcelfile" class="examClass.exam_result.ExamResultAction" method="importAllExamTypeResultFromExcel">
+         	<result name="success">SS_ExamRslt_Registration/message/import_success.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/import_result_from_excel/import_all_examrslt_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_importSpecificstudmarkfromexcelfile" class="examClass.exam_result.ExamResultAction" method="importSpecificExamTypeResultFromExcel">
+         	<result name="success">SS_ExamRslt_Registration/message/import_success.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/import_result_from_excel/import_all_examrslt_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>      	
+      	
+      	<action name="examrsltaction_importclsubexamlist" class="examClass.exam_result.ExamResultAction" method="ClSubjectExamList">
+         	<result name="success">SS_ExamRslt_Registration/import_result_from_excel/exam_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_importclsublist" class="examClass.exam_result.ExamResultAction" method="ClSubjectList">
+         	<result name="success">SS_ExamRslt_Registration/import_result_from_excel/subject_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_importgrdlist" class="examClass.exam_result.ExamResultAction" method="gradeDetailList">
+         	<result name="success">SS_ExamRslt_Registration/import_result_from_excel/grade_detail_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_importMultipleColStudMarkFromExcelFile" class="examClass.exam_result.ExamResultAction" method="importMultipleColExamTypeResultFromExcel">
+         	<result name="success">SS_ExamRslt_Registration/message/import_success.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/import_result_from_excel/import_all_examrslt_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_checkStudetnNamefromExcelFile" class="examClass.exam_result.ExamResultAction" method="checkStudentNameFromExcelFile">
+         	<result name="success">SS_ExamRslt_Registration/import_result_from_excel/unmatch_stud_name_list.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/import_result_from_excel/import_all_examrslt_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	
+      	<action name="examrsltaction_updatestudmarkfromexcelfile" class="examClass.exam_result.ExamResultAction" method="updateAllExamTypeResultFromExcel">
+         	<result name="success">SS_ExamRslt_Registration/message/import_success.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/import_result_from_excel/import_all_examrslt_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_updateSpecificstudmarkfromexcelfile" class="examClass.exam_result.ExamResultAction" method="updateSpecificExamTypeResultFromExcel">
+         	<result name="success">SS_ExamRslt_Registration/message/import_success.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/import_result_from_excel/import_all_examrslt_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="examrsltaction_updateMultipleColStudMarkFromExcelFile" class="examClass.exam_result.ExamResultAction" method="updateMultipleColExamTypeResultFromExcel">
+         	<result name="success">SS_ExamRslt_Registration/message/import_success.jsp</result>
+         	<result name="error">SS_ExamRslt_Registration/import_result_from_excel/import_all_examrslt_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+	</package>
+    
+</struts>

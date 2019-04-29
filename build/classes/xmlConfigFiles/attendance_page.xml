@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <package name="attendance" extends="struts-default">
+        
+        <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        
+        <action name="attendance">
+         	<result type="redirect">stud_attendance</result>
+      	</action>
+      	
+      	<action name="stud_attendance" class="attendanceClass.AttendanceAction" method="attendanceTemp">
+         	<result name="success">SS_Attendance/attendance_template.jsp</result>
+         	<result name="input">SS_Index_Content/login.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+      	</action> 
+      	
+      	<action name="attendance_studentlistpergrade" class="attendanceClass.AttendanceAction" method="attendancePerGrade">
+         	<result name="success">SS_Attendance/student_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="attendance_studlist" class="attendanceClass.AttendanceAction" method="studentListPerGrade">
+         	<result name="success">SS_Attendance/student_list_pergrade.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="attendance_attendancestudlist" class="attendanceClass.AttendanceAction" method="studentListPerGrade">
+         	<result name="success">SS_Attendance/attendance_student_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="attendance_absentstudent" class="attendanceClass.AttendanceAction" method="saveAbsent">
+         	<result name="success">SS_Attendance/student_list_pergrade.jsp</result>
+         	<result name="error">SS_Attendance/error.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="attendance_absentstudentlist" class="attendanceClass.AttendanceAction" method="studentAbsentListPerGrade">
+         	<result name="success">SS_Attendance/absent_student_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="attendance_aggregatestudentabsentlist" class="attendanceClass.AttendanceAction" method="aggregateStudentAbsentListPerGrade">
+         	<result name="success">SS_Attendance/aggregate_student_absent_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="attendance_abserntreason" class="attendanceClass.AttendanceAction" method="saveAbsentReason">
+         	<result name="success">SS_Attendance/absent_student_list.jsp</result>
+         	<result name="error">SS_Attendance/error.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+	</package>
+    
+</struts>

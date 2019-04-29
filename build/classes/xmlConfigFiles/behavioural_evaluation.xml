@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="behaviouralEvaluation" extends="struts-default">
+    
+    	<!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+    
+    	<action name="beheval">
+         	<result type="redirect">behavioural_evaluation_list</result>
+      	</action>
+      	
+      	<action name="behavioural_evaluation_list" class="behEvaluationClass.BevalAction" method="getBehEvalTemp">
+			<result name="success">SS_Behavioural_evaluation/beval_template.jsp</result>
+         	<result name="input">SS_Index_Content/login.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+		</action> 
+		
+		<action name="behaviouralevaluation_classdetaillist" class="behEvaluationClass.BevalAction" method="getClassDetailList">
+         	<result name="success">SS_Behavioural_evaluation/beval_classdetail_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_studentlist" class="behEvaluationClass.BevalAction" method="getStudentListPerGrade">
+         	<result name="success">SS_Behavioural_evaluation/beval_studentlist_pergrade.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_studentbevallist" class="behEvaluationClass.BevalAction" method="getStudentBevalList">
+         	<result name="success">SS_Behavioural_evaluation/beval_stud_bevalrslt.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_evalgradelist" class="behEvaluationClass.BevalAction" method="getBevalGradeList">
+         	<result name="success">SS_Behavioural_evaluation/beval_gradelist_pertrait.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_saveevalgrade" class="behEvaluationClass.BevalAction" method="saveBevalGrade">
+         	<result name="success">SS_Behavioural_evaluation/beval_stud_bevalrslt.jsp</result>
+         	<result name="error">SS_Behavioural_evaluation/beval_stud_bevalrslt.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_saveevalgradefromjs" class="behEvaluationClass.BevalAction" method="saveBevalGradeFromJS">
+         	<result name="success">SS_Behavioural_evaluation/beval_stud_bevalrslt.jsp</result>
+         	<result name="error">SS_Behavioural_evaluation/beval_stud_bevalrslt.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_bevalrslteditform" class="behEvaluationClass.BevalAction" method="bevalRsltEditForm">
+         	<result name="success">SS_Behavioural_evaluation/beval_studrslt_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_updatebevalrslt" class="behEvaluationClass.BevalAction" method="updateDevalRslt">
+         	<result name="success">SS_Behavioural_evaluation/beval_stud_bevalrslt.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      		
+      	
+      	<action name="behaviouralevaluation_evaluationtemp" class="behEvaluationClass.BevalAction" method="getBehEvalTemp">
+         	<result name="success">SS_Behavioural_evaluation/beval_home.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_holisticevaluationtemp" class="behHolisticEvaluationClass.BevalHolisticAction" method="getHolBehEvalTemp">
+         	<result name="success">SS_Behavioural_evaluation/holistic_behavioural_evaluation/holistic_behavioural_eval_temp.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_holisticclassdetaillist" class="behHolisticEvaluationClass.BevalHolisticAction" method="getClassDetailList">
+         	<result name="success">SS_Behavioural_evaluation/holistic_behavioural_evaluation/holistic_beval_classdetail_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_holisticstudentlist" class="behEvaluationClass.BevalAction" method="getStudentListPerGrade">
+         	<result name="success">SS_Behavioural_evaluation/holistic_behavioural_evaluation/holistic_beval_studentlist_pergrade.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="behaviouralevaluation_studentholisticbevallist" class="behHolisticEvaluationClass.BevalHolisticAction" method="getStudentBevalList">
+         	<result name="success">SS_Behavioural_evaluation/holistic_behavioural_evaluation/holistic_beval_stud_bevalrslt.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_categorypointslist" class="behHolisticEvaluationClass.BevalHolisticAction" method="getCategoryPointsList">
+         	<result name="success">SS_Behavioural_evaluation/holistic_behavioural_evaluation/holistic_category_points_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_savepointscomment" class="behHolisticEvaluationClass.BevalHolisticAction" method="savePointsCommentGiven">
+         	<result name="success">SS_Behavioural_evaluation/holistic_behavioural_evaluation/saved.jsp</result>
+         	<result name="error">SS_Behavioural_evaluation/holistic_behavioural_evaluation/not_saved.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_updatepointscomment" class="behHolisticEvaluationClass.BevalHolisticAction" method="updatePointsCommentGiven">
+         	<result name="success">SS_Behavioural_evaluation/holistic_behavioural_evaluation/saved.jsp</result>
+         	<result name="error">SS_Behavioural_evaluation/holistic_behavioural_evaluation/not_saved.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="behaviouralevaluation_getstudentholisticbevalresult" class="behHolisticEvaluationClass.BevalHolisticAction" method="getStudentHolisticBevalResult">
+         	<result name="success">SS_Behavioural_evaluation/holistic_behavioural_evaluation/holistic_evaluation_student_result.jsp</result>
+         	<result name="error">SS_Behavioural_evaluation/holistic_behavioural_evaluation/not_saved.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+    </package>
+</struts>

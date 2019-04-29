@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <package name="payment" extends="struts-default">	
+        
+        <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        
+        <action name="pay">
+         	<result type="redirect">payment_list</result>
+      	</action>
+      		
+		<action name="payment_list" class="paymentFineClass.PaymentAction" method="getPaymentTem">					
+			<result name="success">SS_Payment_Fine/payment_template.jsp</result>
+         	<result name="input">SS_Index_Content/login.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+		</action> 
+		
+		<action name="payment_info" class="paymentFineClass.PaymentAction" method="paymentInfo">
+			<result name="success">SS_Payment_Fine/payment_info/payment_info_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_class_detail" class="paymentFineClass.PaymentAction" method="classDetailList">
+			<result name="success">SS_Payment_Fine/payment_info/payment_class_detail.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_pergrade_studlist" class="paymentFineClass.PaymentAction" method="studentPerGradeList">
+         	<result name="success">SS_Payment_Fine/payment_info/payment_student.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+		
+		<action name="payment_form_edu" class="paymentFineClass.PaymentAction" method="paymentFormEdu">
+			<result name="success">SS_Payment_Fine/payment_info/payment_form_edu.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		
+		
+		<action name="payment_month_selected_normalclass" class="paymentFineClass.PaymentAction" method="paymentFormEduSelectedMonthNormalClass">
+			<result name="success">SS_Payment_Fine/payment_info/payment_selected_month.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		<action name="payment_month_selected_tutorial" class="paymentFineClass.PaymentAction" method="paymentFormEduSelectedMonthTutorial">
+			<result name="success">SS_Payment_Fine/payment_info/payment_selected_month.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		<action name="payment_month_selected_summer" class="paymentFineClass.PaymentAction" method="paymentFormEduSelectedMonthSummer">
+			<result name="success">SS_Payment_Fine/payment_info/payment_selected_month.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		
+				
+		<action name="payment_month_remove" class="paymentFineClass.PaymentAction" method="paymentFormEduRemoveMonth">
+			<result name="success">SS_Payment_Fine/payment_info/payment_selected_month.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_form_tut" class="paymentFineClass.PaymentAction" method="paymentFormTut">
+			<result name="success">SS_Payment_Fine/payment_info/payment_form_tutorial.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_form_sum" class="paymentFineClass.PaymentAction" method="paymentFormSummer">
+			<result name="success">SS_Payment_Fine/payment_info/payment_form_summer.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_form_mat" class="paymentFineClass.PaymentAction" method="paymentFormMaterial">
+			<result name="success">SS_Payment_Fine/payment_info/payment_form_mat.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		<action name="payment_regfee_student_list" class="paymentFineClass.PaymentAction" method="regFeeStudentList">
+			<result name="success">SS_Payment_Fine/payment_info/payment_regfee_student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="payment_payRegistrationFee" class="paymentFineClass.PaymentAction" method="getRegFeePaymentForm">
+			<result name="success">SS_Payment_Fine/payment_info/payment_form_registration_fee.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_save_payRegistrationFee" class="paymentFineClass.PaymentAction" method="saveRegFeePaymentForm">
+			<result name="success">SS_Payment_Fine/payment_info/payment_attachment_registration_fee.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_get_regfee_paid_receipt" class="paymentFineClass.PaymentAction" method="paidPaymentFormForRegFee">
+			<result name="success">SS_Payment_Fine/payment_info/payment_attachment_paid_registration_fee.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		<action name="payment_student_list" class="paymentFineClass.PaymentAction" method="paymentstudentList">
+			<result name="success">SS_Payment_Fine/payment_info/payment_student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_save_tut" class="paymentFineClass.PaymentAction" method="paymentTutorialInfoSave">
+<!-- 			<result name="success">SS_Payment_Fine/payment_info/payment_tutorial_student_list.jsp</result> -->
+			<result name="success">SS_Payment_Fine/payment_info/payment_attachment.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_save_sum" class="paymentFineClass.PaymentAction" method="paymentSummerInfoSave">
+<!-- 			<result name="success">SS_Payment_Fine/payment_info/payment_summber_student_list.jsp</result> -->
+			<result name="success">SS_Payment_Fine/payment_info/payment_attachment.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_save_edu_morethanamonth" class="paymentFineClass.PaymentAction" method="paymentInfoForMoreThanAMonthSave">
+			<result name="success">SS_Payment_Fine/payment_info/payment_form_edu_more.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="payment_save_edu_mulitpleMonth" class="paymentFineClass.PaymentAction" method="paymentInfoForMoreThanAMonthSaveSubmite">
+<!-- 			<result name="success">SS_Payment_Fine/payment_info/payment_student_list.jsp</result> -->
+			<result name="success">SS_Payment_Fine/payment_info/payment_attachment_more_months.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="payment_save_edu_mulitpleMonth_summer" class="paymentFineClass.PaymentAction" method="paymentInfoForMoreThanAMonthSaveSubmite">
+<!-- 			<result name="success">SS_Payment_Fine/payment_info/payment_summber_student_list.jsp</result> -->
+			<result name="success">SS_Payment_Fine/payment_info/payment_attachment_more_months.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_save_edu" class="paymentFineClass.PaymentAction" method="paymentInfoSave">
+<!-- 			<result name="success">SS_Payment_Fine/payment_info/payment_student_list.jsp</result> -->
+			<result name="success">SS_Payment_Fine/payment_info/payment_attachment.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_get_edu_paid_receipt" class="paymentFineClass.PaymentAction" method="paidPaymentFormForEdu">
+			<result name="success">SS_Payment_Fine/payment_info/payment_attachment_paid.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_save_mat" class="paymentFineClass.PaymentAction" method="paymentMaterialInfoSave">
+			<result name="success">SS_Payment_Fine/payment_info/payment_material_student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_add_selected_mat" class="paymentFineClass.PaymentAction" method="paymentAddSelectedMaterial">
+			<result name="success">SS_Payment_Fine/payment_info/payment_material_student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="payment_remove_selected_mat" class="paymentFineClass.PaymentAction" method="paymentRemoveSelectedMaterial">
+			<result name="success">SS_Payment_Fine/payment_info/payment_material_student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_save_selected_material" class="paymentFineClass.PaymentAction" method="paymentSaveSelectedMaterial">
+<!-- 			<result name="success">SS_Payment_Fine/payment_info/payment_form_mat.jsp</result> -->
+			<result name="success">SS_Payment_Fine/payment_info/payment_attachment_material.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_tutorial_student_list" class="paymentFineClass.PaymentAction" method="tutorialpaymentstudentList">
+			<result name="success">SS_Payment_Fine/payment_info/payment_tutorial_student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_summer_student_list" class="paymentFineClass.PaymentAction" method="summerpaymentstudentList">
+			<result name="success">SS_Payment_Fine/payment_info/payment_summber_student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="payment_material_student_list" class="paymentFineClass.PaymentAction" method="materialpaymentstudentList">
+			<result name="success">SS_Payment_Fine/payment_info/payment_material_student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="payment_material_cost" class="paymentFineClass.PaymentAction" method="paymentMaterialCost">
+			<result name="success">SS_Payment_Fine/payment_info/material_cost.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_admin" class="paymentFineClass.PaymentAction" method="paymentAdmin">
+			<result name="success">SS_Admin/payment_admin/payment_admin_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="paymentinfo_create" class="paymentFineClass.PaymentAction" method="paymentInfoCreateFrm">
+			<result name="success">SS_Admin/payment_admin/payment_admin_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="paymentinfo_edit" class="paymentFineClass.PaymentAction" method="paymentInfoEditFrm">
+			<result name="success">SS_Admin/payment_admin/payment_admin_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_info_save" class="paymentFineClass.PaymentAction" method="paymentAdminInfoSave">
+			<result name="success">SS_Admin/payment_admin/payment_admin_template.jsp</result>
+			<result name="error">SS_Payment_Fine/payment_admin/payment_admin_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_info_update" class="paymentFineClass.PaymentAction" method="paymentAdminInfoUpdate">
+			<result name="success">SS_Admin/payment_admin/payment_admin_template.jsp</result>
+			<result name="error">SS_Payment_Fine/payment_admin/payment_admin_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_school_info" class="paymentFineClass.PaymentAction" method="getSchoolInfoList">
+			<result name="success">SS_Admin/school_information/school_information.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="payment_school_info_save" class="paymentFineClass.PaymentAction" method="saveSchoolInformation">
+			<result name="success">SS_Admin/school_information/school_information.jsp</result>
+			<result name="error">SS_Admin/school_information/school_information.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="payment_todaysCollection" class="paymentFineClass.PaymentAction" method="getTodaysCollection">
+			<result name="success">SS_Payment_Fine/collection/todays_collection.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="payment_emailTodaysCollection" class="paymentFineClass.PaymentAction" method="emailTodaysCollection">
+			<result name="success">SS_Payment_Fine/collection/message/email_succes.jsp</result>
+			<result name="error">SS_Payment_Fine/collection/message/email_failed.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		
+		
+		<action name="payment_showStudentPaymentHistory" class="paymentFineClass.PaymentAction" method="showStudentPaymentHistory">
+			<result name="success">SS_Payment_Fine/payment_info/payment_student_history_per_month.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+	</package>
+    
+</struts>

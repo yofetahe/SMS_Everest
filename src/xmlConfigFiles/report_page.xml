@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <package name="report" extends="struts-default">
+        
+        <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        
+        <action name="rpt">
+         	<result type="redirect">report_list</result>
+      	</action>
+      		
+		<action name="report_list" class="reportClass.ReportAction" method="getReportTemp">
+			<result name="success">SS_Report/report_template.jsp</result>
+         	<result name="input">SS_Index_Content/login.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+		</action> 
+		
+		<action name="report_examschedule" class="reportClass.ReportAction" method="getExamSchedule">
+			<result name="success">SS_Report/exam_schedule/report_exam_schedule.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="report_examprogramreport" class="reportClass.ReportAction" method="getExamProgramReport">
+			<result name="success">SS_Report/exam_schedule/report_exam_program.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="report_quarterMarkList" class="reportClass.ReportAction" method="quarterMarkList">
+			<result name="success">SS_Report/quarter_mark_list/quarter_mark_list_temp.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action> 
+		
+		<action name="report_getClassQuarterMarkList" class="reportClass.ReportAction" method="getQuarterMarkList">
+			<result name="success">SS_Report/quarter_mark_list/quarter_mark_list_each_class.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="report_getPDFClassQuarterMarkList" class="reportClass.ReportAction" method="getPDFQuarterMarkList">
+			<result name="success">SS_Report/message/pdf_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+		
+		<action name="report_classlist" class="examClass.exam_result.ExamResultAction" method="ClassList">
+         	<result name="success">SS_Report/quarter_mark_list/class_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	
+      	
+		<action name="report_grdlist" class="examClass.exam_result.ExamResultAction" method="gradeDetailList">
+         	<result name="success">SS_Report/quarter_mark_list/grade_detail_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	
+      	
+		<action name="report_clsublist" class="examClass.exam_result.ExamResultAction" method="ClSubjectListPerExamSubRel">
+         	<result name="success">SS_Report/quarter_mark_list/subject_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+		<action name="report_clsublistfilter" class="examClass.exam_result.ExamResultAction" method="FilterClSubjectList">
+         	<result name="success">SS_Report/education_office/subject_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+		<action name="report_clsubexamlist" class="examClass.exam_result.ExamResultAction" method="ClSubjectExamList">
+         	<result name="success">SS_Report/quarter_mark_list/exam_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+		
+		<action name="report_studentroster" class="reportClass.ReportAction" method="studentRoster">
+         	<result name="success">SS_Report/student_roster/student_roster_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+		<action name="report_studentrosterfullyear" class="reportClass.ReportAction" method="studentRosterFullYear">
+         	<result name="success">SS_Report/student_roster_full_year/student_roster_full_year_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	<action name="report_studenttranscript" class="reportClass.ReportAction" method="studentTranscript">
+         	<result name="success">SS_Report/stud_transcript/stud_transcript_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_getStudentLisPerClassDetail" class="reportClass.ReportAction" method="getStudentLisPerClassDetail">
+         	<result name="success">SS_Report/stud_transcript/student_list_per_grade.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_getStudentTranscript" class="reportClass.ReportAction" method="getStudentTranscript">
+         	<result name="success">SS_Report/stud_transcript/student_transcript.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	
+      	
+      	<action name="report_studroster_classlist" class="examClass.exam_result.ExamResultAction" method="ClassList">
+         	<result name="success">SS_Report/student_roster/class_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_studroster_grdlist" class="examClass.exam_result.ExamResultAction" method="gradeDetailList">
+         	<result name="success">SS_Report/student_roster/grade_detail_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_getStudentRosterList" class="reportClass.ReportAction" method="getStudentRosterList">
+         	<result name="success">SS_Report/student_roster/student_roster_each_class.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_getPDFStudentRosterList" class="reportClass.ReportAction" method="getStudentPDFRosterList">
+         	<result name="success">SS_Report/message/pdf_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_getFullYearStudentRosterList" class="reportClass.ReportAction" method="getFullYearStudentRosterList">
+         	<result name="success">SS_Report/student_roster_full_year/full_year_student_roster_each_class.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	<action name="report_topNsStudent" class="reportClass.ReportAction" method="topNsStudent">
+         	<result name="success">SS_Report/top_ranking_students/top_ranking_students_temp.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	      	
+      	<action name="report_getTopNsStudent" class="reportClass.ReportAction" method="getTopNsStudent">
+         	<result name="success">SS_Report/top_ranking_students/top_ranking_students_list.jsp</result>
+         	<result name="OVERALL">SS_Report/top_ranking_students/over_all_top_ranking_students.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	
+      	
+      	
+      	<action name="report_belowAverageStudents" class="reportClass.ReportAction" method="belowAverageStudents">
+         	<result name="success">SS_Report/belowAverageStudents/below_average_students_temp.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+    
+      	
+      	
+      	
+      	 
+      	
+      	<action name="report_studMarkPlanAndImp" class="reportClass.ReportAction" method="studMarkPlanAndImp">
+         	<result name="success">SS_Report/education_office/studmark_plan_imp_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_eduoff_classlist" class="examClass.exam_result.ExamResultAction" method="ClassList">
+         	<result name="success">SS_Report/education_office/class_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_getStudentMarkPlanAndImpList" class="reportClass.ReportAction" method="getStudMarkPlanAndImpList">
+         	<result name="success">SS_Report/message/pdf_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_getExcelStudentMarkPlanAndImpList" class="reportClass.ReportAction" method="getExcelStudMarkPlanAndImpList">
+         	<result name="success">SS_Report/message/excel_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+		
+		<action name="report_studMarkListTemp" class="reportClass.ReportAction" method="studMarkListTemp">
+         	<result name="success">SS_Report/education_office/student_mark_list_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_getStudentMarkListReport" class="reportClass.ReportAction" method="getStudentMarkListPDFReport">
+         	<result name="success">SS_Report/message/pdf_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_selectSubject" class="reportClass.ReportAction" method="selectSubject">
+         	<result name="success">SS_Report/message/pdf_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_disselectSubject" class="reportClass.ReportAction" method="disselectSubject">
+         	<result name="success">SS_Report/message/pdf_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_getStudentExcelMarkListReport" class="reportClass.ReportAction" method="generateStudentMarkListExcelReport">
+         	<result name="success">SS_Report/message/excel_generation_success.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	<action name="report_studAttendanceFormatTemp" class="reportClass.ReportAction" method="attendanceFormatTemplate">
+         	<result name="success">SS_Report/stud_attendance/stud_attendance_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_getStudentAttendanceForm" class="reportClass.ReportAction" method="getStudentAttendanceForm">
+         	<result name="success">SS_Report/stud_attendance/stud_attendance_format.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_getPDFStudentAttendanceForm" class="reportClass.ReportAction" method="getPDFStudentAttendanceForm">
+         	<result name="success">SS_Report/stud_attendance/stud_attendance_format.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	<action name="report_studMarkListFormatTemp" class="examClass.exam_result.ExamResultAction" method="ClassList">
+         	<result name="success">SS_Report/work_formats/formats_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+<!--       	<action name="report_studMarkListFormatTemp" class="reportClass.ReportAction" method="studMarkListFormatTemp"> -->
+<!--          	<result name="success">SS_Report/work_formats/formats_template.jsp</result> -->
+<!--          	<result name="input">SS_Index_Content/expire_session_page.jsp</result> -->
+<!--       	</action>  -->
+      	
+      	<action name="report_getStudentMarkListFormat" class="reportClass.ReportAction" method="studMarkListFormatInfo">
+         	<result name="success">SS_Report/work_formats/stud_marklist_format.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>    	
+      	
+      	
+      	
+      	
+      	<action name="report_unpaidStudentList" class="reportClass.ReportAction" method="unpaidStudentList">
+         	<result name="success">SS_Report/finance/unpaid_student/unpaid_student_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_unpaidStudentListTemp" class="reportClass.ReportAction" method="unpaidStudentListTemp">
+         	<result name="success">SS_Report/finance/unpaid_student/unpaid_student_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	<action name="report_paymentCollectionTemp" class="reportClass.ReportAction" method="paymentCollectionTemp">
+         	<result name="success">SS_Report/finance/payment_collection/payment_collection_template.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_dailyPaymentCollection" class="reportClass.ReportAction" method="dailyPaymentCollection">
+         	<result name="success">SS_Report/finance/payment_collection/payment_collection.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="communication_emailCollection" class="reportClass.ReportAction" method="emailPaymentCollection">
+         	<result name="success">SS_Report/finance/payment_collection/message/email_success.jsp</result>
+         	<result name="error">SS_Report/finance/payment_collection/message/email_failed.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_monthlyPaymentCollection" class="reportClass.ReportAction" method="monthlyPaymentCollection">
+         	<result name="success">SS_Report/finance/payment_collection/payment_collection.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	<action name="report_checkInsertedExamResult" class="reportClass.ReportAction" method="checkInsertedExamResult">
+         	<result name="success">SS_Report/checkInsertedExamResult/check_inserted_exam_result.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_checkrslt_classlist" class="examClass.exam_result.ExamResultAction" method="getAllActiveClassList">
+         	<result name="success">SS_Report/checkInsertedExamResult/class_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_checkrslt_grdlist" class="examClass.exam_result.ExamResultAction" method="getAllRelatedGradeDetailList">
+         	<result name="success">SS_Report/checkInsertedExamResult/grade_detail_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_checkrslt_examtypelist" class="reportClass.ReportAction" method="getAllExamTypeList">
+         	<result name="success">SS_Report/checkInsertedExamResult/examtype_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_getCheckInsertedMarkRsltList" class="reportClass.ReportAction" method="getCheckInsertedMarkRsltList">
+         	<result name="success">SS_Report/checkInsertedExamResult/summeried_student_number.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+		
+      	
+      	
+      	
+      	
+      	<action name="report_belowaverage_classlist" class="examClass.exam_result.ExamResultAction" method="ClassList">
+         	<result name="success">SS_Report/belowAverageStudents/class_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="report_belowaverage_grdlist" class="examClass.exam_result.ExamResultAction" method="gradeDetailList">
+         	<result name="success">SS_Report/belowAverageStudents/grade_detail_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_belowaverage_averagelist" class="examClass.exam_result.ExamResultAction" method="averageList">
+         	<result name="success">SS_Report/belowAverageStudents/average_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="report_getBelowAverageStudentMarkList" class="examClass.exam_result.ExamResultAction" method="getBelowAverageStudentMarkList">
+         	<result name="success">SS_Report/belowAverageStudents/below_average_student_rslt_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+	</package>
+    
+</struts>

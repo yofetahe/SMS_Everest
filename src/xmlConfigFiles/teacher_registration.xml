@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <package name="teacherReg" extends="struts-default">
+        
+        <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        
+        <action name="teacher">
+         	<result type="redirect">teachers_list</result>
+      	</action>
+	
+		<!-- teacher list -->
+		<action name="teachers_list" class="teacherClass.TeacherAction" method="teacherList">
+         	<param name="teach_tab">1</param>
+         	<result name="success">SS_Teacher_Registration/teacher_template.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/login.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+      	</action> 
+      	
+      	<action name="teacheraction_photoupload" class="teacherClass.TeacherAction" method="uploadPage">
+         	<result name="success">SS_Teacher_Registration/photo_uploader.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="uploadTeacherFile" class="teacherClass.TeacherAction" method="doUpload">
+			<result name="success">SS_Teacher_Registration/teacher_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+      	
+      	<action name="teacheraction_create" class="teacherClass.TeacherAction" method="teacherCrtFrm">
+         	<result name="success">SS_Teacher_Registration/teacher_create.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="teacheraction_subjectlist" class="teacherClass.assignment.TeacherAssignAction" method="subjectListPerGrade">
+         	<result name="success">SS_Teacher_Registration/Assignment/subject_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="teacheraction_save" class="teacherClass.TeacherAction" method="teacherSave">
+         	<result name="success">SS_Teacher_Registration/teacher_list.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+         	<result name="CREATEFORM">SS_Teacher_Registration/teacher_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="teacheraction_edit" class="teacherClass.TeacherAction" method="teacherEditFrm">
+         	<result name="success">SS_Teacher_Registration/teacher_edit.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="teacheraction_update" class="teacherClass.TeacherAction" method="teacherUpdate">
+         	<result name="success">SS_Teacher_Registration/teacher_perinfo_edit_form.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+         	<result name="UPDATEFORM">SS_Teacher_Registration/teacher_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="teacheraction_perinfo_update" class="teacherClass.TeacherAction" method="teacherPerinfoEditFrm">
+         	<result name="success">SS_Teacher_Registration/teacher_perinfo_edit_form.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result> 	
+      	</action> 
+      	
+      	
+      	
+      	<!-- teacher subject relationship -->      	
+      	
+      	<action name="teacheraction_assignto" class="teacherClass.assignment.TeacherAssignAction" method="tchrAssignmentList">
+         	<result name="success">SS_Teacher_Registration/Assignment/assign_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result> 	
+      	</action> 
+      	
+      	<action name="teacheraction_assignsavefrm" class="teacherClass.assignment.TeacherAssignAction" method="tchrAssignmentSaveFrm">
+         	<result name="success">SS_Teacher_Registration/Assignment/assign_create.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result> 	
+      	</action> 
+      	
+      	<action name="teacheraction_assignsave" class="teacherClass.assignment.TeacherAssignAction" method="tchrAssignmentSave">
+         	<result name="success">SS_Teacher_Registration/Assignment/assign_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/Assignment/assign_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result> 	
+      	</action> 
+      	
+      	<action name="teacheraction_assignupdatefrm" class="teacherClass.assignment.TeacherAssignAction" method="tchrAssignmentUpdateFrm">
+         	<result name="success">SS_Teacher_Registration/Assignment/assign_edit.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result> 	
+      	</action> 
+      	
+      	<action name="teacheraction_assignupdate" class="teacherClass.assignment.TeacherAssignAction" method="tchrAssignmentUpdate">
+         	<result name="success">SS_Teacher_Registration/Assignment/assign_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/Assignment/assign_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result> 	
+      	</action>
+      	
+      	
+      	
+      	<!-- teacher current address -->
+      	
+      	<action name="teacheraction_curadd_update" class="teacherClass.current_address.TeacherCuraddAction" method="teacherCurraddEditFrm">
+         	<result name="success">SS_Teacher_Registration/current_address/teacher_curadd_edit_form.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>	
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="teacheraction_curadd_save" class="teacherClass.current_address.TeacherCuraddAction" method="teacherCurraddSave">
+         	<result name="success">SS_Teacher_Registration/current_address/teacher_curadd_edit_form.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>         	
+         	<result name="CREATEFORM">SS_Teacher_Registration/current_address/teacher_curadd_edit_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>  	
+      	</action> 
+      	
+      	<action name="teacheraction_curaddupdate" class="teacherClass.current_address.TeacherCuraddAction" method="teacherCurraddUpdate">
+         	<result name="success">SS_Teacher_Registration/current_address/teacher_curadd_edit_form.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/update_failur.jsp</result>         	
+         	<result name="UPDATEFORM">SS_Teacher_Registration/current_address/teacher_curadd_edit_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>  	
+      	</action> 
+		
+		
+		<!-- teacher emergency contact -->
+		
+		<action name="teacheraction_emrgcont_savefrm" class="teacherClass.emergency_contact.TeacherEmergContAction" method="emergContSaveFrm">
+         	<result name="success">SS_Teacher_Registration/emergency_contact/teacher_emergcont_edit_form.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action>
+      	
+      	<action name="teacheraction_emrgcont_save" class="teacherClass.emergency_contact.TeacherEmergContAction" method="emergContSave">
+         	<result name="success">SS_Teacher_Registrationemergency_contact/teacher_emergcont_edit_form.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>         	
+         	<result name="CREATEFORM">SS_Teacher_Registration/emergency_contact/teacher_emergcont_edit_form.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result> 	
+      	</action> 
+      	
+      	<action name="teacheraction_emrgcont_update" class="teacherClass.emergency_contact.TeacherEmergContAction" method="emergContUpdate">
+         	<result name="success">SS_Teacher_Registration/emergency_contact/teacher_emergcont_edit_form.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/update_failur.jsp</result>         	
+         	<result name="UPDATEFORM">SS_Teacher_Registration/emergency_contact/teacher_emergcont_edit_form.jsp</result> 
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	<!-- teacher reward --> 
+      	
+      	<action name="teacheraction_reward_list" class="teacherClass.reward.TeacherRewardAction" method="rewardList">
+         	<result name="success">SS_Teacher_Registration/reward/teacher_reward_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_reward_save_form" class="teacherClass.reward.TeacherRewardAction" method="rewardSaveFrm">
+         	<result name="success">SS_Teacher_Registration/reward/teacher_reward_create.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="teacheraction_reward_save" class="teacherClass.reward.TeacherRewardAction" method="rewardSave">
+         	<result name="success">SS_Teacher_Registration/reward/teacher_reward_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="CREATEFORM">SS_Teacher_Registration/reward/teacher_reward_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_reward_update_form" class="teacherClass.reward.TeacherRewardAction" method="rewardUpdateFrm">
+         	<result name="success">SS_Teacher_Registration/reward/teacher_reward_edit.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action>
+      	
+      	<action name="teacheraction_reward_update" class="teacherClass.reward.TeacherRewardAction" method="rewardUpdate">
+         	<result name="success">SS_Teacher_Registration/reward/teacher_reward_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="UPDATEFORM">SS_Teacher_Registration/reward/teacher_reward_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action>
+      	
+      	
+      	<!-- disciplinary action --> 
+      	
+      	<action name="teacheraction_disact_list" class="teacherClass.disciplinary_action.TeacherDisactAction" method="disactList">
+         	<result name="success">SS_Teacher_Registration/disciplinary_action/teacher_disact_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_disact_creat_form" class="teacherClass.disciplinary_action.TeacherDisactAction" method="disactSaveFrm">
+         	<result name="success">SS_Teacher_Registration/disciplinary_action/teacher_disact_create.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_disact_save" class="teacherClass.disciplinary_action.TeacherDisactAction" method="disactSave">
+         	<result name="success">SS_Teacher_Registration/disciplinary_action/teacher_disact_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="CREATEFORM">SS_Teacher_Registration/disciplinary_action/teacher_disact_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_disact_edit_form" class="teacherClass.disciplinary_action.TeacherDisactAction" method="disactEditFrm">
+         	<result name="success">SS_Teacher_Registration/disciplinary_action/teacher_disact_edit.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_disact_update" class="teacherClass.disciplinary_action.TeacherDisactAction" method="disactUpdate">
+         	<result name="success">SS_Teacher_Registration/disciplinary_action/teacher_disact_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="UPDATEFORM">SS_Teacher_Registration/disciplinary_action/teacher_disact_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action>
+      	
+      	<!-- education background action -->
+      	
+      	<action name="teacheraction_edu_background" class="teacherClass.edu_background.EduBackgroundAction" method="getEduBackgroundList">
+         	<result name="success">SS_Teacher_Registration/educational_background/edu_background_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action>
+      	
+      	<action name="teacheraction_edubackground_addform" class="teacherClass.edu_background.EduBackgroundAction" method="eduBackgroundAddForm">
+         	<result name="success">SS_Teacher_Registration/educational_background/edu_background_create.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_edubackground_save" class="teacherClass.edu_background.EduBackgroundAction" method="saveEduBackground">
+         	<result name="success">SS_Teacher_Registration/educational_background/edu_background_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action>
+      	
+      	<action name="teacheraction_edubackground_updateform" class="teacherClass.edu_background.EduBackgroundAction" method="eduBackgroundUpdateForm">
+         	<result name="success">SS_Teacher_Registration/educational_background/edu_background_edit.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_edubackground_update" class="teacherClass.edu_background.EduBackgroundAction" method="updateEduBackground">
+         	<result name="success">SS_Teacher_Registration/educational_background/edu_background_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<!-- work experience action -->
+      	
+      	<action name="teacheraction_work_experience" class="teacherClass.work_experience.WorkExperienceAction" method="getWorkExpList">
+         	<result name="success">SS_Teacher_Registration/work_experience/work_exp_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action>
+      	
+      	<action name="teacheraction_workexp_addform" class="teacherClass.work_experience.WorkExperienceAction" method="workExpAddForm">
+         	<result name="success">SS_Teacher_Registration/work_experience/work_exp_create.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_workexp_save" class="teacherClass.work_experience.WorkExperienceAction" method="saveWorkExp">
+         	<result name="success">SS_Teacher_Registration/work_experience/work_exp_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action>
+      	
+      	<action name="teacheraction_workexp_updateform" class="teacherClass.work_experience.WorkExperienceAction" method="workExpUpdateForm">
+         	<result name="success">SS_Teacher_Registration/work_experience/work_exp_edit.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action> 
+      	
+      	<action name="teacheraction_workexp_update" class="teacherClass.work_experience.WorkExperienceAction" method="updateWorkExp">
+         	<result name="success">SS_Teacher_Registration/work_experience/work_exp_list.jsp</result>        
+         	<result name="error">SS_Teacher_Registration/message/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>	
+      	</action>
+      	
+	</package>
+    
+</struts>

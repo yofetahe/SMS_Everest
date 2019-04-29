@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <!--script src="calendar/js/jquery-1.5.1.js"-->
+               
+        <!-- new jquery -->
+        <script type="text/javascript" src="jquery-1.6.1.js" ></script>
+
+        <script type="text/javascript" src="jquery.calendars.js"></script> 
+        <script type="text/javascript" src="jquery.calendars.plus.js"></script>
+        <style type="text/css">
+            @import "jquery.calendars.picker.css";
+        </style> 
+        <script type="text/javascript" src="jquery.calendars.picker.js"></script>
+        <script type="text/javascript" src="jquery.calendars.ethiopian.js"></script>
+        <script type="text/javascript" src="jquery.calendars.ethiopian-am.js"></script>
+        <!-- new jquery -->
+
+        <script>
+            $(document).ready(function(){
+                $('#amcal').calendarsPicker({calendar: $.calendars.instance('ethiopian')}); 
+            });
+        </script>
+    </head>
+    <body>
+        <input type="text" value="" id="amcal"/>
+    </body>
+</html>

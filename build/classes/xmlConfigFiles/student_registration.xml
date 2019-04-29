@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="StudentReg" extends="struts-default">
+	    
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+	    
+	    <action name="student">
+         	<result type="redirect">students_list</result>
+      	</action>     	
+	
+		<action name="students_list" class="studentClass.StudentAction" method="studList">
+			<param name="stud_tab">1</param>
+			<result name="success">SS_Student_Registration/student_template.jsp</result>
+			<result name="input">SS_Index_Content/login.jsp</result>
+			<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_filterbyyear" class="studentClass.StudentAction" method="studList">
+			<param name="stud_tab">1</param>
+			<result name="success">SS_Student_Registration/student_male_female_num_per_class.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_edit" class="studentClass.StudentAction" method="studentEdit">
+         	<result name="success">SS_Student_Registration/student_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="imageRetrieveServlet" class="studentClass.StudentAction" method="getStudPhoto">
+         	<result name="success" type="stream"></result>
+      	</action>
+      	
+      	<action name="studentaction_dropout" class="studentClass.StudentAction" method="studentDropOut">
+      		<result name="success">SS_Student_Registration/student_dropout_confirmation.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_cancledropout" class="studentClass.StudentAction" method="cancleStudentDropOut">
+      		<result name="success">SS_Student_Registration/student_dropout_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_confirmdropout" class="studentClass.StudentAction" method="confirmStudentDropOut">
+      		<result name="success">SS_Student_Registration/student_dropout_success.jsp</result>
+      		<result name="error">SS_Student_Registration/student_dropout_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_photoupload" class="studentClass.StudentAction" method="uploadPage">
+			<result name="success">SS_Student_Registration/photo_uploader.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+      	
+      	<action name="uploadFile" class="studentClass.StudentAction" method="doUpload">
+			<result name="success">SS_Student_Registration/student_template.jsp</result>
+			<result name="error">pages/admin_pages/about_us/upload_error.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+      	
+      	<action name="saveStudentProfileInformation" class="studentClass.StudentAction" method="saveStudentProfileInformation">
+			<result name="success">SS_Student_Registration/student_template.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+		</action>
+      	
+      	<action name="studentaction_save" class="studentClass.StudentAction" method="studentSave">
+         	<result name="success">SS_Student_Registration/personal_info/student_personalinfo_create.jsp</result>
+         	<result name="error">SS_Student_Registration/save_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_activemenu" class="studentClass.StudentAction" method="studentActiveMenu">
+         	<result name="success">SS_Student_Registration/student_additionalinfo_activemenu.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_update" class="studentClass.StudentAction" method="studentUpdate">
+         	<result name="success">SS_Student_Registration/update_success.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_create" class="studentClass.StudentAction" method="studentCreate">
+         	<result name="success">SS_Student_Registration/student_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_allstudentlist" class="studentClass.StudentAction" method="getAllStudentList">
+         	<result name="success">SS_Student_Registration/student_list_pergrade.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_allinactivestudentlist" class="studentClass.StudentAction" method="getAllInactiveStudentList">
+         	<result name="success">SS_Student_Registration/inactive_stud_list/student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_candidatestudentlist" class="studentClass.StudentAction" method="getCandidateStudentList">
+         	<result name="success">SS_Student_Registration/candidate_list/student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_deletecandidatestudent" class="studentClass.StudentAction" method="deleteCandidateStudent">
+         	<result name="success">SS_Student_Registration/candidate_list/student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_candidateedit" class="studentClass.StudentAction" method="editFormCandidateStudentList">
+         	<result name="success">SS_Student_Registration/personal_info/personalinfo_edit_form.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	
+      	
+      	
+      	<action name="studentaction_dropoutstudentlist" class="studentClass.StudentAction" method="getDropoutStudentList">
+         	<result name="success">SS_Student_Registration/candidate_list/student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_activateStudentsStatus" class="studentClass.StudentAction" method="activateStudentsStatus">
+         	<result name="success">SS_Student_Registration/inactive_stud_list/student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	
+      	<action name="studentaction_pergradelist" class="studentClass.StudentAction" method="studentPerGrade">
+         	<result name="success">SS_Student_Registration/student_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_allstudentlist_pergrade" class="studentClass.StudentAction" method="getAllStudentPerGrade">
+         	<result name="success">SS_Student_Registration/student_list_pergrade.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_getStudentContactInfo" class="studentClass.StudentAction" method="getAllStudentContactInfoPerGrade">
+         	<result name="success">SS_Student_Registration/student_contact_info_pergrade.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_getStudentInfoWithEmergencyContact" class="studentClass.StudentAction" method="getStudentInfoWithEmergencyContactPerGrade">
+         	<result name="success">SS_Student_Registration/student_info_with_emergency_contact_pergrade.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_classdetail" class="studentClass.StudentAction" method="studentPerGradeDetail">
+         	<result name="success">SS_Student_Registration/student_list_pergrade.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_editform" class="studentClass.StudentAction" method="studentAddInfoEdit">
+         	<result name="success">SS_Student_Registration/personal_info/student_personalinfo_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_editform_save" class="studentClass.StudentAction" method="studentAddInfoCreate">
+         	<result name="success">SS_Student_Registration/personal_info/student_personalinfo_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<!-- current address --> 
+      	
+      	<action name="studentaction_currentaddress" class="studentClass.current_address.CurrentAddressAction" method="studentCurrentAddressEdit">
+         	<result name="create">SS_Student_Registration/current_address/student_currentaddress_create.jsp</result>
+         	<result name="success">SS_Student_Registration/current_address/student_currentaddress_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>  
+      	
+      	<action name="studentaction_currentaddress_save" class="studentClass.current_address.CurrentAddressAction" method="studentCurrentAddressCreate">
+         	<result name="success">SS_Student_Registration/current_address/student_currentaddress_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_curaddress_save" class="studentClass.current_address.CurrentAddressAction" method="studentCurAddressSave">
+         	<result name="success">SS_Student_Registration/update_success.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_currentaddress_update" class="studentClass.current_address.CurrentAddressAction" method="studentCurrentAddressUpdate">
+         	<result name="success">SS_Student_Registration/update_success.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	<!-- emergency contact -->
+      	
+      	<action name="studentaction_emergcontact" class="studentClass.emergency_contact.EmergencyContactAction" method="studentEmergencyContactList">
+         	<result name="success">SS_Student_Registration/emergency_contact/student_emergcontact_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_emergcontact_create" class="studentClass.emergency_contact.EmergencyContactAction" method="studentEmergencyContactCreate">
+         	<result name="success">SS_Student_Registration/emergency_contact/student_emergcontact_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_emergcontact_save" class="studentClass.emergency_contact.EmergencyContactAction" method="studentEmergencyContactSave">
+         	<result name="success">SS_Student_Registration/emergency_contact/student_emergcontact_list.jsp</result>
+         	<result name="error">SS_Student_Registration/save_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_emergcontact_edit" class="studentClass.emergency_contact.EmergencyContactAction" method="studentEmergencyContactEdit">
+         	<result name="success">SS_Student_Registration/emergency_contact/student_emergcontact_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_emergcont_update" class="studentClass.emergency_contact.EmergencyContactAction" method="studentEmergencyContactUpdate">
+         	<result name="success">SS_Student_Registration/emergency_contact/student_emergcontact_list.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	<!-- grade history -->
+      	
+      	<action name="studentaction_grdhistory" class="studentClass.grade_history.GradeHistoryAction" method="studentGradeHistoryList">
+         	<result name="success">SS_Student_Registration/grade_history/student_gradehistory_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_grdhistory_save" class="studentClass.grade_history.GradeHistoryAction" method="studentGradeHistoryCreate">
+         	<result name="success">SS_Student_Registration/grade_history/student_gradehistory_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_grdhistory_sbjlist" class="studentClass.grade_history.GradeHistoryAction" method="studentGradeHistorySubject">
+         	<result name="success">SS_Student_Registration/grade_history/student_gradehistory_subjectlist.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	<!-- student registration -->      	
+      	
+      	<action name="studentaction_studentlist" class="studentClass.student_registration.StudentRegAction" method="getStudentList">
+         	<result name="success">SS_Student_Registration/student_registration/student_list_forreg.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_selstudentlist" class="studentClass.student_registration.StudentRegAction" method="selStudentList">
+         	<result name="success">SS_Student_Registration/student_registration/student_list_selected.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_removestudentlist" class="studentClass.student_registration.StudentRegAction" method="revmoveStudentList">
+         	<result name="success">SS_Student_Registration/student_registration/student_list_selected.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_regstudentlist" class="studentClass.student_registration.StudentRegAction" method="regStudentList">
+         	<result name="success">SS_Student_Registration/student_registration/registration_success.jsp</result>
+         	<result name="error">SS_Student_Registration/student_registration/registration_error.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_changeclassroom" class="studentClass.student_registration.StudentRegAction" method="changeStudentClassroom">
+         	<result name="success">SS_Student_Registration/update_success.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+		<!-- updated registration way -->
+      	
+      	<action name="studentaction_selectedstudentlistforregistration" class="studentClass.student_registration.StudentRegAction" method="selectedStudentListForRegistration">
+         	<result name="success">SS_Student_Registration/student_registration/student_list_selected.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	
+      	
+      	
+      	
+      	
+      	<!-- reward -->
+      	
+      	<action name="studentaction_reward" class="studentClass.reward.RewardAction" method="studentRewardCreate">
+         	<result name="success">SS_Student_Registration/reward/student_reward_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_reward_edit" class="studentClass.reward.RewardAction" method="studentRewardEdit">
+         	<result name="success">SS_Student_Registration/reward/student_reward_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_reward_list" class="studentClass.reward.RewardAction" method="studentRewardList">
+         	<result name="success">SS_Student_Registration/reward/student_reward_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>  
+      	
+      	<action name="studentaction_reward_save" class="studentClass.reward.RewardAction" method="studentRewardSave">
+         	<result name="success">SS_Student_Registration/reward/student_reward_list.jsp</result>
+         	<result name="error">SS_Student_Registration/save_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_reward_update" class="studentClass.reward.RewardAction" method="studentRewardUpdate">
+         	<result name="success">SS_Student_Registration/reward/student_reward_list.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	 
+      	
+      	
+      	<!-- disciplinary action -->
+      	
+      	<action name="studentaction_disaction" class="studentClass.disciplinary_action.DisciplinaryAction" method="studentDisActionList">
+         	<result name="success">SS_Student_Registration/disciplinary_action/student_disaction_list.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_disaction_create" class="studentClass.disciplinary_action.DisciplinaryAction" method="studentDisActionCreate">
+         	<result name="success">SS_Student_Registration/disciplinary_action/student_disaction_create.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_disaction_edit" class="studentClass.disciplinary_action.DisciplinaryAction" method="studentDisActionEdit">
+         	<result name="success">SS_Student_Registration/disciplinary_action/student_disaction_edit.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_disact_save" class="studentClass.disciplinary_action.DisciplinaryAction" method="studentDisActionSave">
+         	<result name="success">SS_Student_Registration/disciplinary_action/student_disaction_list.jsp</result>
+         	<result name="error">SS_Student_Registration/save_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="studentaction_disact_update" class="studentClass.disciplinary_action.DisciplinaryAction" method="studentDisActionUpdate">
+         	<result name="success">SS_Student_Registration/disciplinary_action/student_disaction_list.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	
+      	<action name="studentaction_specialneedrequired" class="specialNeedRequired.SpecialNeedRequiredAction" method="saveStudentSpecialNeedRequirement">
+         	<result name="success">SS_Student_Registration/save_success.jsp</result>
+         	<result name="error">SS_Student_Registration/save_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_specialneedrequiredupdate" class="specialNeedRequired.SpecialNeedRequiredAction" method="updateStudentSpecialNeedRequirement">
+         	<result name="success">SS_Student_Registration/update_success.jsp</result>
+         	<result name="error">SS_Student_Registration/update_failur.jsp</result>
+			<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>      	
+      	
+      	
+      	<!-- add student profile from excel -->
+      	<action name="studentaction_addstudpersonalinfofromexcel" class="studentClass.StudentAction" method="studPersonalInfoFromExcelForm">
+         	<result name="success">SS_Student_Registration/personal_info/import_stud_personal_info_from_excel.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_importStudPersonalInfoFromExcel" class="studentClass.StudentAction" method="importStudPersonalInfoFromExcel">
+         	<result name="success">SS_Student_Registration/save_success.jsp</result>
+         	<result name="error">SS_Student_Registration/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<!-- add student contact info from excel -->
+      	<action name="studentaction_importStudentContactInfoFromExcelForm" class="studentClass.StudentAction" method="studContactInfoFromExcelForm">
+         	<result name="success">SS_Student_Registration/import_stud_contact_info_from_excel.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="studentaction_importStudContactInfoFromExcel" class="studentClass.StudentAction" method="importStudContactInfoFromExcel">
+         	<result name="success">SS_Student_Registration/save_success.jsp</result>
+         	<result name="error">SS_Student_Registration/save_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      </package>
+</struts>

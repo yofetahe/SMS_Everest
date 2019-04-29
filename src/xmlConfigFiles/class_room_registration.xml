@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+    <package name="classReg" extends="struts-default">
+        
+        <!-- ***** GLOBAL ERROR PAGE ***** -->
+        <global-results>
+	        <result name="Exception">/WEB-INF/errorPage.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Throwable" result="Exception"/>
+	    </global-exception-mappings>
+	    <!-- ***** GLOBAL ERROR PAGE ***** -->
+        
+        <action name="class">
+         	<result type="redirect">class_list</result>
+      	</action>
+	
+		<!-- class -->
+		
+		<action name="class_list" class="cRoomClass.CRoomAction" method="classList">
+         	<result name="success">SS_Class_Registration/class_template.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/login.jsp</result>
+         	<result name="ACCESSDENIED">SS_Util/access_denied_page.jsp</result>
+      	</action>  
+      	
+      	<action name="classaction_classlist" class="cRoomClass.CRoomAction" method="classList">
+         	<result name="success">SS_Class_Registration/class_list.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classaction_savefrm" class="cRoomClass.CRoomAction" method="classSaveFrm">
+         	<result name="success">SS_Class_Registration/class_create.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classaction_save" class="cRoomClass.CRoomAction" method="classSave">
+         	<result name="success">SS_Class_Registration/class_list.jsp</result>
+         	<result name="CREATEFORM">SS_Class_Registration/class_create.jsp</result>
+         	<result name="error">SS_Class_Registration/class_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_updatefrm" class="cRoomClass.CRoomAction" method="classUpdateFrm">
+         	<result name="success">SS_Class_Registration/class_edit.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_update" class="cRoomClass.CRoomAction" method="classUpdate">
+         	<result name="success">SS_Class_Registration/class_list.jsp</result>
+         	<result name="UPDATEFORM">SS_Class_Registration/class_edit.jsp</result>
+         	<result name="error">SS_Class_Registration/class_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>  
+      	
+      	<!-- class and subject relationship -->
+      	
+      	<action name="classaction_clsubrel" class="cRoomClass.CRoomAction" method="classSubjectRel">
+         	<result name="success">SS_Class_Registration/classsub_rel/classsub_template.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_clsubrelCrtFrm" class="cRoomClass.CRoomAction" method="classSubjectRelCrtFrm">
+         	<result name="success">SS_Class_Registration/classsub_rel/classsub_create.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_clsubrelCrt" class="cRoomClass.CRoomAction" method="classSubjectRelCrt">
+         	<result name="success">SS_Class_Registration/classsub_rel/classsub_list.jsp</result>
+         	<result name="error">SS_Class_Registration/classsub_rel/classsub_create.jsp</result>
+         	<result name="CREATEFORM">SS_Class_Registration/classsub_rel/classsub_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classaction_clsubrelEditFrm" class="cRoomClass.CRoomAction" method="classSubjectRelEditFrm">
+         	<result name="success">SS_Class_Registration/classsub_rel/classsub_edit.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_clsubrelEdit" class="cRoomClass.CRoomAction" method="classSubjectRelEdit">
+         	<result name="success">SS_Class_Registration/classsub_rel/classsub_list.jsp</result>
+         	<result name="error">SS_Class_Registration/classsub_rel/classsub_edit.jsp</result>
+         	<result name="UPDATEFORM">SS_Class_Registration/classsub_rel/classsub_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_clsubExmRel" class="cRoomClass.CRoomAction" method="clSubExmRel">
+         	<result name="success">SS_Class_Registration/subject_examtype/examtype_sub_list.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_clsubExmRelCrtFrm" class="cRoomClass.CRoomAction" method="clSubExmRelCrtFrm">
+         	<result name="success">SS_Class_Registration/subject_examtype/examtype_sub_create.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_clsubExmRelSave" class="examClass.exam_subject_rel.ExamSubjectRelAction" method="classSubjectRelSave">
+         	<result name="success">SS_Class_Registration/subject_examtype/examtype_sub_list.jsp</result>
+         	<result name="error">SS_Class_Registration/subject_examtype/examtype_sub_create.jsp</result>
+         	<result name="CREATEFORM">SS_Class_Registration/subject_examtype/examtype_sub_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_clsubExmRelEditFrm" class="cRoomClass.CRoomAction" method="clSubExmRelEditFrm">
+         	<result name="success">SS_Class_Registration/subject_examtype/examtype_sub_edit.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_clsubExmRelEdit" class="examClass.exam_subject_rel.ExamSubjectRelAction" method="classSubjectRelUpdate">
+         	<result name="success">SS_Class_Registration/subject_examtype/examtype_sub_list.jsp</result>
+         	<result name="error">SS_Class_Registration/subject_examtype/examtype_sub_edit.jsp</result>
+         	<result name="UPDATEFORM">SS_Class_Registration/subject_examtype/examtype_sub_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	
+      	<!-- class and class detail relation --> 
+      	
+      	<action name="classaction_cldetaillist" class="cRoomClass.class_detail.CRDetailAction" method="classDtlList">
+         	<result name="success">SS_Class_Registration/class_detail/class_detail_template.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>  
+      	
+      	<action name="classaction_classdetailfrm" class="cRoomClass.class_detail.CRDetailAction" method="classDtlAddFrm">
+         	<result name="success">SS_Class_Registration/class_detail/class_detail_create.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classaction_cdetail" class="cRoomClass.class_detail.CRDetailAction" method="classDtlList">
+         	<result name="success">SS_Class_Registration/class_detail/class_detail_list.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>  
+      	
+      	<action name="classaction_savecldetail" class="cRoomClass.class_detail.CRDetailAction" method="classDtlSave">
+         	<result name="success">SS_Class_Registration/class_detail/class_detail_list.jsp</result>
+         	<result name="error">SS_Class_Registration/class_detail/class_detail_create.jsp</result>
+         	<result name="CREATEFORM">SS_Class_Registration/class_detail/class_detail_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>         	
+      	</action> 
+      	
+      	<action name="classaction_classdetaileditfrm" class="cRoomClass.class_detail.CRDetailAction" method="classDtlUpdateFrm">
+         	<result name="success">SS_Class_Registration/class_detail/class_detail_edit.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classaction_editcldetail" class="cRoomClass.class_detail.CRDetailAction" method="classDtlUpdate">
+         	<result name="success">SS_Class_Registration/class_detail/class_detail_list.jsp</result>
+         	<result name="error">SS_Class_Registration/class_detail/class_detail_create.jsp</result>
+         	<result name="UPDATEFORM">SS_Class_Registration/class_detail/class_detail_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>     	
+      	</action>
+	
+		
+		<!-- class detail registration -->
+		 
+		<action name="classaction_cdetaileditfrm" class="cRoomClass.cd_registration.CDetailAction" method="cDeatilUpdateFrm">
+         	<result name="success">SS_Class_Registration/cd_registration/cd_edit.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classaction_cdetailedit" class="cRoomClass.cd_registration.CDetailAction" method="cDeatilEdit">
+         	<result name="success">SS_Class_Registration/cd_registration/cd_list.jsp</result>
+         	<result name="error">SS_Class_Registration/cd_registration/cd_edit.jsp</result>
+         	<result name="UPDATEFORM">SS_Class_Registration/cd_registration/cd_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>  
+      	
+      	<action name="classaction_cdetailsavefrm" class="cRoomClass.cd_registration.CDetailAction" method="cDeatilSaveFrm">
+         	<result name="success">SS_Class_Registration/cd_registration/cd_create.jsp</result>
+         	<result name="error">SS_Class_Registration/update_failur.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classaction_cdetailsave" class="cRoomClass.cd_registration.CDetailAction" method="cDeatilSave">
+         	<result name="success">SS_Class_Registration/cd_registration/cd_list.jsp</result>
+         	<result name="error">SS_Class_Registration/cd_registration/cd_create.jsp</result>
+         	<result name="CREATEFORM">SS_Class_Registration/cd_registration/cd_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	
+      	<!-- class detail registration -->
+      	
+      	<action name="classaction_gradinglist" class="cRoomClass.exam_grading.EGradingAction" method="examGradingList">
+         	<result name="success">SS_Class_Registration/exam_grading/exam_grading_list.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	
+      	<action name="classaction_gradeaddform" class="cRoomClass.exam_grading.EGradingAction" method="examGradingAddForm">
+         	<result name="success">SS_Class_Registration/exam_grading/exam_grading_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_savegradesubrel" class="cRoomClass.exam_grading.EGradingAction" method="saveExamGradingRel">
+      	    <result name="success">SS_Class_Registration/exam_grading/exam_grading_list.jsp</result>
+         	<result name="error">SS_Class_Registration/exam_grading/exam_grading_create.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_gradeupdateform" class="cRoomClass.exam_grading.EGradingAction" method="examGradingUpdateForm">
+         	<result name="success">SS_Class_Registration/exam_grading/exam_grading_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action> 
+      	
+      	<action name="classaction_updategradesubrel" class="cRoomClass.exam_grading.EGradingAction" method="updateExamGradingRel">
+      	    <result name="success">SS_Class_Registration/exam_grading/exam_grading_list.jsp</result>
+         	<result name="error">SS_Class_Registration/exam_grading/exam_grading_edit.jsp</result>
+         	<result name="input">SS_Index_Content/expire_session_page.jsp</result>
+      	</action>
+      	      	
+	</package>
+    
+</struts>
